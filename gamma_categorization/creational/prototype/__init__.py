@@ -1,0 +1,3 @@
+"""
+Prototype pattern package initialization
+"""

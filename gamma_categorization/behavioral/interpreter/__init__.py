@@ -1,0 +1,3 @@
+"""
+Interpreter pattern package initialization
+"""

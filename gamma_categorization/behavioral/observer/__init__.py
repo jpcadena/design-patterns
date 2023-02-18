@@ -1,0 +1,3 @@
+"""
+Observer pattern package initialization
+"""

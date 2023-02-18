@@ -1,0 +1,3 @@
+"""
+Singleton pattern package initialization
+"""

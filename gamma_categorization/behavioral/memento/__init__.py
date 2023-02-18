@@ -1,0 +1,3 @@
+"""
+Memento pattern package initialization
+"""

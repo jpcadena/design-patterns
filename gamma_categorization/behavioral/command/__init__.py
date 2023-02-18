@@ -1,0 +1,3 @@
+"""
+Command pattern package initialization
+"""

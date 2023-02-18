@@ -1,0 +1,3 @@
+"""
+Iterator pattern package initialization
+"""

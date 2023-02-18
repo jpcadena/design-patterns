@@ -1,0 +1,3 @@
+"""
+Visitor pattern package initialization
+"""

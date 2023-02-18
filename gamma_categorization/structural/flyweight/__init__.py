@@ -1,0 +1,3 @@
+"""
+Flyweight pattern package initialization
+"""

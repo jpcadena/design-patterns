@@ -1,0 +1,3 @@
+"""
+Mediator pattern package initialization
+"""

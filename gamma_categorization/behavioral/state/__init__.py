@@ -1,0 +1,3 @@
+"""
+State pattern package initialization
+"""

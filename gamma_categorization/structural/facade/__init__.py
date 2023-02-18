@@ -1,0 +1,3 @@
+"""
+Facade pattern package initialization
+"""

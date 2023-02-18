@@ -1,0 +1,3 @@
+"""
+Proxy pattern package initialization
+"""

@@ -1,0 +1,3 @@
+"""
+Decorator pattern package initialization
+"""
