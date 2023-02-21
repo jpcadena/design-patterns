@@ -59,6 +59,8 @@
 
 ## About the project
 
+IN PROGRESS...
+
 [![Project][project-screenshot]](https://example.com)
 
 This project is about Design Patterns in Python.

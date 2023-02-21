@@ -1,0 +1,3 @@
+"""
+Singleton Coding Exercise
+"""

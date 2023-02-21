@@ -34,7 +34,7 @@ class Person:
 john: Person = Person("John", Address("123 London Road", "London", "UK"))
 print(john)
 # jane = john
-jane = copy.deepcopy(john)
+jane = copy.deepcopy(john)  # Do not use copy()
 jane.name = "Jane"
 jane.address.street_address = "124 London Road"
-print(john, jane)
+print(john, '\n', jane)

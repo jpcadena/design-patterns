@@ -1,0 +1,3 @@
+"""
+Singleton Decorator script
+"""

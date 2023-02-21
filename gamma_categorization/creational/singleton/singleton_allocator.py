@@ -1,0 +1,3 @@
+"""
+Singleton Allocator script
+"""
