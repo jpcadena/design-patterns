@@ -58,5 +58,5 @@ code_builder = CodeBuilder('Person').\
     add_field('age', '0')
 print(code_builder)
 
-# This code does not include type hinting because of the UnitTest
+# This code does not include f'string because of the UnitTest
 # done with Python 3.5
