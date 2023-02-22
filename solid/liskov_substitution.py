@@ -83,8 +83,8 @@ class Square(Rectangle):
 def use_it(rectangle: Rectangle) -> None:
     """
     Use method for rectangle object
-    :param rectangle: object
-    :type rectangle:Rectangle
+    :param rectangle: Rectangle instance
+    :type rectangle: Rectangle
     :return: None
     :rtype: NoneType
     """

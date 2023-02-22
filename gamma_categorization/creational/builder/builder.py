@@ -76,6 +76,3 @@ html_builder.add_child('li', 'hello')
 html_builder.add_child('li', 'world')
 print('Ordinary builder')
 print(html_builder)
-
-
-#

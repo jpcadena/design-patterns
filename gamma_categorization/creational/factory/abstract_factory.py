@@ -43,13 +43,13 @@ class HotDrinkFactory(ABC):
     """
 
     @abstractmethod
-    def prepare(self, amount) -> None:
+    def prepare(self, amount) -> HotDrink:
         """
         Abstract prepare method based on amount
         :param amount: Quantity to prepare
         :type amount: int
-        :return: None
-        :rtype: NoneType
+        :return: HotDrink instance
+        :rtype: HotDrink
         """
 
 

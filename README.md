@@ -20,7 +20,7 @@
 <h3 align="center">design-patterns</h3>
 
   <p align="center">
-    Description for design-patterns
+    Description for design-patterns project in Python
     <br />
     <a href="https://github.com/jpcadena/design-patterns"><strong>Explore the docs »</strong></a>
     <br />
@@ -63,7 +63,10 @@ IN PROGRESS...
 
 [![Project][project-screenshot]](https://example.com)
 
-This project is about Design Patterns in Python.
+This project is about Design Patterns in Python that includes the S.O.L.I.D.
+principles and the Gamma Categorization for 23 design pattern classified into
+Creational, Behavioral and Structural based on Clean Code: A Handbook of Agile
+Software Craftsmanship by Robert C. Martin.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

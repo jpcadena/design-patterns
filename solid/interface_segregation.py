@@ -43,13 +43,13 @@ class MultiFunctionPrinter(Machine):
     """
     Multi Function Printer class
     """
-    def print(self, document):
+    def print(self, document) -> None:
         pass
 
-    def fax(self, document):
+    def fax(self, document) -> None:
         pass
 
-    def scan(self, document):
+    def scan(self, document) -> None:
         pass
 
 
@@ -58,11 +58,11 @@ class OldFashionedPrinter(Machine):
     Old Fashioned Printer class based on Machine
     """
 
-    def print(self, document):
+    def print(self, document) -> None:
         # ok - print stuff
         pass
 
-    def fax(self, document):
+    def fax(self, document) -> None:
         pass  # do-nothing
 
     def scan(self, document):
@@ -76,7 +76,7 @@ class Printer:
     """
 
     @abstractmethod
-    def print(self, document):
+    def print(self, document) -> None:
         """
         Print abstract method
         :param document: document
@@ -92,7 +92,7 @@ class Scanner:
     """
 
     @abstractmethod
-    def scan(self, document):
+    def scan(self, document) -> None:
         """
         Scan abstract method
         :param document: document
@@ -107,7 +107,7 @@ class MyPrinter(Printer):
     My Printer class based on Printer
     """
 
-    def print(self, document):
+    def print(self, document) -> None:
         print(document)
 
 
@@ -116,10 +116,10 @@ class Photocopier(Printer, Scanner):
     Photocopier class that inherits from Printer and Scanner
     """
 
-    def print(self, document):
+    def print(self, document) -> None:
         print(document)
 
-    def scan(self, document):
+    def scan(self, document) -> None:
         pass  # something meaningful
 
 
@@ -129,11 +129,11 @@ class MultiFunctionDevice(Printer, Scanner):
     """
 
     @abstractmethod
-    def print(self, document):
+    def print(self, document) -> None:
         pass
 
     @abstractmethod
-    def scan(self, document):
+    def scan(self, document) -> None:
         pass
 
 

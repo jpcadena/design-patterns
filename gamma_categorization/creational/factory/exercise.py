@@ -15,8 +15,8 @@ class Person:
     Person class
     """
 
-    def __init__(self, id: int, name: str):
-        self.id: int = id
+    def __init__(self, person_id: int, name: str):
+        self.person_id: int = person_id
         self.name: str = name
 
 
@@ -26,7 +26,7 @@ class PersonFactory:
     """
 
     def __init__(self):
-        self.person_id: int = 0
+        self.person_person_id: int = 0
 
     def create_person(self, name: str) -> Person:
         """
@@ -36,8 +36,8 @@ class PersonFactory:
         :return: Person instance
         :rtype: Person
         """
-        person: Person = Person(self.person_id, name)
-        self.person_id += 1
+        person: Person = Person(self.person_person_id, name)
+        self.person_person_id += 1
         return person
 
 

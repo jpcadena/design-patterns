@@ -12,9 +12,9 @@ class Point:
     Point class
     """
 
-    def __init__(self, x: int = 0, y: int = 0):
-        self.x: int = x
-        self.y: int = y
+    def __init__(self, x_coordinate: int = 0, y_coordinate: int = 0):
+        self.x_coordinate: int = x_coordinate
+        self.y_coordinate: int = y_coordinate
 
 
 class Line:
@@ -32,8 +32,9 @@ class Line:
         :return: Line instance
         :rtype: Line
         """
-        start_copy: Point = Point(self.start.x, self.start.y)
-        end_copy: Point = Point(self.end.x, self.end.y)
+        start_copy: Point = Point(
+            self.start.x_coordinate, self.start.y_coordinate)
+        end_copy: Point = Point(self.end.x_coordinate, self.end.y_coordinate)
         return Line(start_copy, end_copy)
 
 
@@ -42,11 +43,11 @@ p2: Point = Point(10, 10)
 line1: Line = Line(p1, p2)
 line2: Line = line1.deep_copy()
 
-print("line1 start:", line1.start.x, line1.start.y)
-print("line2 start:", line2.start.x, line2.start.y)
+print("line1 start:", line1.start.x_coordinate, line1.start.y_coordinate)
+print("line2 start:", line2.start.x_coordinate, line2.start.y_coordinate)
 
-p1.x = 5
-p1.y = 5
+p1.x_coordinate = 5
+p1.y_coordinate = 5
 
-print("line1 start:", line1.start.x, line1.start.y)
-print("line2 start:", line2.start.x, line2.start.y)
+print("line1 start:", line1.start.x_coordinate, line1.start.y_coordinate)
+print("line2 start:", line2.start.x_coordinate, line2.start.y_coordinate)

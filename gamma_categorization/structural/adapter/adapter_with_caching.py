@@ -1,0 +1,3 @@
+"""
+Adapter with caching script
+"""

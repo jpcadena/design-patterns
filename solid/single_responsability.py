@@ -1,5 +1,6 @@
 """
 Single Responsibility Principle
+or Separate of Concerns Principle
 """
 
 
@@ -14,10 +15,10 @@ class Journal:
         self.entries: list = []
         self.count: int = 0
 
-    def add_entry(self, text: str):
+    def add_entry(self, text: str) -> None:
         """
         Add entry to journal by text
-        :param text: text for new entry
+        :param text: Data for new entry
         :type text: str
         :return: None
         :rtype: NoneType
@@ -25,7 +26,7 @@ class Journal:
         self.count += 1
         self.entries.append(f'{self.count}: {text}')
 
-    def remove_entry(self, pos: int):
+    def remove_entry(self, pos: int) -> None:
         """
         Remove entry by position index
         :param pos: position of entry
@@ -35,7 +36,7 @@ class Journal:
         """
         del self.entries[pos]
 
-    def __str__(self):
+    def __str__(self) -> str:
         return '\n'.join(self.entries)
 
     # Anti-pattern: God object where all functionality including:
@@ -66,7 +67,7 @@ class PersistenceManager:
     """
 
     @staticmethod
-    def save_to_file(journal: Journal, filename: str):
+    def save_to_file(journal: Journal, filename: str) -> None:
         """
         Save the object class itself to a file
         :param journal: Object to save
@@ -81,7 +82,7 @@ class PersistenceManager:
             file.close()
 
     @staticmethod
-    def load(filename: str):
+    def load(filename: str) -> None:
         """
         Load object from filename
         :param filename: Name of the file
@@ -91,10 +92,10 @@ class PersistenceManager:
         """
 
     @staticmethod
-    def load_from_web(uri: str):
+    def load_from_web(uri: str) -> None:
         """
         Load data from URI
-        :param uri: URI to access object from the web
+        :param uri: Web address to access object from the web
         :type uri: str
         :return: None
         :rtype: NoneType

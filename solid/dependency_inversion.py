@@ -71,7 +71,7 @@ class Research:
     # bad because strongly dependent on e.g. storage type
 
     # def __init__(self, relationships):
-    #     # high-level: find all of john's children
+    #     # high-level: find all of John's children
     #     relations = relationships.relations
     #     for r in relations:
     #         if r[0].name == 'John' and r[1] == Relationship.PARENT:

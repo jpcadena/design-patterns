@@ -38,35 +38,39 @@ class ProductFilter:
     """
     Product Filter class
     """
-    def filter_by_color(self, products: list[Product], color: Color):
+
+    def filter_by_color(
+            self, products: list[Product], color: Color) -> Product:
         """
         Filter by color method
         :param products: list of products
         :type products: list[Product]
         :param color: color enum
         :type color: Color
-        :return: product
+        :return: Product instance
         :rtype: Product
         """
         for product in products:
             if product.color == color:
                 yield product
 
-    def filter_by_size(self, products: list[Product], size: Size):
+    def filter_by_size(self, products: list[Product], size: Size) -> Product:
         """
         Filter by size method
         :param products: list of products
         :type products: list[Product]
         :param size: size enum
         :type size: Size
-        :return: product
+        :return: Product instance
         :rtype: Product
         """
         for product in products:
             if product.size == size:
                 yield product
 
-    def filter_by_size_and_color(self, products: list[Product], size: Size, color: Color):
+    def filter_by_size_and_color(
+            self, products: list[Product], size: Size, color: Color
+    ) -> Product:
         """
         Filter by size and color method
         :param products: list of products
@@ -75,7 +79,7 @@ class ProductFilter:
         :type size: Size
         :param color: color enum
         :type color: Color
-        :return: product
+        :return: Product instance
         :rtype: Product
         """
         for product in products:
@@ -94,7 +98,7 @@ class Specification:
     Specification class
     """
 
-    def is_satisfied(self, item: Product):
+    def is_satisfied(self, item: Product) -> None:
         """
         Is satisfied the product
         :param item: product
@@ -112,7 +116,8 @@ class Filter:
     """
     Filter class
     """
-    def filter(self, items: list[Product], spec: Specification):
+
+    def filter(self, items: list[Product], spec: Specification) -> None:
         """
         Filter method
         :param items: list of products
@@ -131,7 +136,7 @@ class ColorSpecification(Specification):
     def __init__(self, color: Color):
         self.color: Color = color
 
-    def is_satisfied(self, item: Product):
+    def is_satisfied(self, item: Product) -> bool:
         return item.color == self.color
 
 
@@ -142,7 +147,7 @@ class SizeSpecification(Specification):
     def __init__(self, size: Size):
         self.size: Size = size
 
-    def is_satisfied(self, item: Product):
+    def is_satisfied(self, item: Product) -> bool:
         return item.size == self.size
 
 
@@ -162,7 +167,7 @@ class AndSpecification(Specification):
     def __init__(self, *args):
         self.args: tuple = args
 
-    def is_satisfied(self, item: Product):
+    def is_satisfied(self, item: Product) -> bool:
         return all(map(
             lambda spec: spec.is_satisfied(item), self.args))
 
