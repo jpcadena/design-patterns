@@ -20,7 +20,7 @@
 <h3 align="center">design-patterns</h3>
 
   <p align="center">
-    Description for design-patterns project in Python
+    Design patterns in Python
     <br />
     <a href="https://github.com/jpcadena/design-patterns"><strong>Explore the docs »</strong></a>
     <br />
@@ -59,8 +59,6 @@
 
 ## About the project
 
-IN PROGRESS...
-
 [![Project][project-screenshot]](https://example.com)
 
 This project is about Design Patterns in Python that includes the S.O.L.I.D.
@@ -72,7 +70,10 @@ Software Craftsmanship by Robert C. Martin.
 
 ## Built with
 
-* [![Python][Python.org]][Python-url]
+* [![Python][Python]][python-url]
+* [![Pylint][pylint]][pylint-url]
+* [![Pycharm][Pycharm]][Pycharm-url]
+* [![Markdown][Markdown]][Markdown-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -84,7 +85,7 @@ Software Craftsmanship by Robert C. Martin.
 
 ### Prerequisites
 
-* [Python 3.10+][Python-docs-url]
+* [Python 3.10+][Python-docs]
 
 ### Installation
 
@@ -116,12 +117,11 @@ Software Craftsmanship by Robert C. Martin.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- USAGE EXAMPLES -->
 
 ### Usage
 
-1. If found **sample.env**, rename it with to **.env**.
+1. If found **sample.env**, rename it to **.env**.
 2. Replace your **credentials** into the *.env* file.
 3. Execute with console
     ```
@@ -131,10 +131,11 @@ Software Craftsmanship by Robert C. Martin.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- CONTRIBUTING -->
 
 ## Contributing
+
+[![GitHub][GitHub]][github-url]
 
 If you have a suggestion that would make this better, please fork the repo and
 create a pull request.
@@ -160,7 +161,6 @@ autocompletion: [Tabnine](https://www.tabnine.com/install)
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- LICENSE -->
 
 ## License
@@ -170,14 +170,13 @@ Distributed under the MIT License.
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
-
 <!-- CONTACT -->
 
 ## Contact
 
-LinkedIn: [Juan Pablo Cadena Aguilar][linkedin-url]
+- [![LinkedIn][LinkedIn]][linkedin-url]
 
-E-mail: [Juan Pablo Cadena Aguilar](mailto:jpcadena@espol.edu.ec?subject=[GitHub]design-patterns)
+- [![Outlook][Outlook]](mailto:jpcadena@espol.edu.ec?subject=[GitHub]tweets-classification-backend)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -186,12 +185,32 @@ E-mail: [Juan Pablo Cadena Aguilar](mailto:jpcadena@espol.edu.ec?subject=[GitHub
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
+[LinkedIn]: https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white
+
 [linkedin-url]: https://linkedin.com/in/juanpablocadenaaguilar
+
+[Outlook]: https://img.shields.io/badge/Microsoft_Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white
 
 [project-screenshot]: assets/images/project.png
 
-[Python.org]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
+[Python]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
 
-[Python-url]: https://www.python.org/
+[python-url]: https://www.python.org/
 
-[Python-docs-url]: https://docs.python.org/3.10/
+[Python-docs]: https://docs.python.org/3.10/
+
+[Pylint]: https://img.shields.io/badge/linting-pylint-yellowgreen
+
+[pylint-url]: https://www.pylint.org/
+
+[PyCharm]: https://img.shields.io/badge/PyCharm-21D789?style=for-the-badge&logo=pycharm&logoColor=white
+
+[Pycharm-url]: https://www.jetbrains.com/pycharm/
+
+[Markdown]: https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white
+
+[Markdown-url]: https://daringfireball.net/projects/markdown/
+
+[GitHub]: https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white
+
+[GitHub-url]: https://github.com/jpcadena/design-patterns

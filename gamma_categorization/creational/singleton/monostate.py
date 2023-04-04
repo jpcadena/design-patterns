@@ -14,6 +14,8 @@ class CEO:
 
     def __init__(self):
         self.__dict__ = self.__shared_state
+        self.name = self.__shared_state['name']
+        self.age = self.__shared_state['age']
 
     def __str__(self):
         return f'{self.name} is {self.age} years old'

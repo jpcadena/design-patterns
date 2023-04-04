@@ -44,11 +44,11 @@ class CodeBuilder:
 
     def __str__(self) -> str:
         if not self.fields:
-            return "class {}:\n  pass".format(self.root_name)
-        lines = ["class {}:".format(self.root_name), "  def __init__(self):"]
+            return f"class {self.root_name}:\n  pass"
+        lines = [f"class {self.root_name}:", "  def __init__(self):"]
         self.indent += self.INDENT_STEP
         for field in self.fields:
-            lines.append("    self.{} = {}".format(field[0], field[1]))
+            lines.append(f"    self.{field[0]} = {field[1]}")
         self.indent -= self.INDENT_STEP
         return "\n".join(lines)
 
@@ -58,5 +58,4 @@ code_builder = CodeBuilder('Person').\
     add_field('age', '0')
 print(code_builder)
 
-# This code does not include f'string because of the UnitTest
-# done with Python 3.5
+# Change f'strings to format(vars) instead for UnitTest at Python 3.5

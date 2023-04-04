@@ -3,6 +3,7 @@ Abstract Factory
 """
 from abc import ABC, abstractmethod
 from enum import Enum, auto
+from typing import Type
 
 
 class HotDrink(ABC):
@@ -85,17 +86,15 @@ class HotDrinkMachine:
         COFFEE = auto()
         TEA = auto()
 
-    factories: list[tuple[str, HotDrinkFactory]] = []
-    initialized = False
+    factories: dict[AvailableDrink, Type[CoffeeFactory | TeaFactory]] = {
+        AvailableDrink.COFFEE: CoffeeFactory,
+        AvailableDrink.TEA: TeaFactory
+    }
 
     def __init__(self) -> None:
-        if not self.initialized:
-            self.initialized = True
-            for available_drink in self.AvailableDrink:
-                name: str = available_drink.name.title()
-                factory_name: str = name + 'Factory'
-                factory_instance: HotDrinkFactory = eval(factory_name)()
-                self.factories.append((name, factory_instance))
+        self.factory_instances: dict = {
+            drink: drink_factory() for drink, drink_factory in
+            self.factories.items()}
 
     def make_drink(self) -> HotDrink:
         """
@@ -104,12 +103,13 @@ class HotDrinkMachine:
         :rtype: HotDrink
         """
         print('Available drinks:')
-        for factory in self.factories:
-            print(factory[0])
+        for index, drink in enumerate(self.factory_instances):
+            print(f"{index}: {drink.name.title()}")
         drink_input: int = int(input(
-            f'Please pick drink (0-{len(self.factories) - 1}): '))
+            f'Please pick drink (0-{len(self.factory_instances) - 1}): '))
         amount: int = int(input('Specify amount: '))
-        return self.factories[drink_input][1].prepare(amount)
+        drink_enum = list(self.factory_instances.keys())[drink_input]
+        return self.factory_instances[drink_enum].prepare(amount)
 
 
 hot_drink_machine: HotDrinkMachine = HotDrinkMachine()
