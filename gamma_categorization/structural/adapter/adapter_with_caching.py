@@ -1,56 +1,8 @@
 """
 Adapter with caching script
 """
-
-
-class Point:
-    """
-    Point class
-    """
-
-    def __init__(self, x_coordinate: int, y_coordinate: int):
-        self.x_coordinate: int = x_coordinate
-        self.y_coordinate: int = y_coordinate
-
-    def draw_point(self) -> None:
-        """
-        Draws a point
-        :return: None
-        :rtype: NoneType
-        """
-        print(".", end=" ")
-
-
-# Adapter
-
-
-class Line:
-    """
-    Line class
-    """
-
-    def __init__(self, start: Point, end: Point):
-        self.start: Point = start
-        self.end: Point = end
-
-
-class Rectangle(list[Line]):
-    """
-    Rectangle class
-    """
-
-    def __init__(
-            self, x_coordinate: int, y_coordinate: int, width: int,
-            height: int):
-        super().__init__()
-        self.append(Line(Point(x_coordinate, y_coordinate),
-                         Point(x_coordinate + width, y_coordinate)))
-        self.append(Line(Point(x_coordinate + width, y_coordinate),
-                         Point(x_coordinate + width, y_coordinate + height)))
-        self.append(Line(Point(x_coordinate, y_coordinate),
-                         Point(x_coordinate, y_coordinate + height)))
-        self.append(Line(Point(x_coordinate, y_coordinate + height),
-                         Point(x_coordinate + width, y_coordinate + height)))
+from gamma_categorization.structural.adapter.adapter import draw, Point, \
+    Line, Rectangle
 
 
 class LineToPointAdapter(list[Point]):
@@ -82,22 +34,6 @@ class LineToPointAdapter(list[Point]):
 
     def __iter__(self):
         return iter(self.cache[self.hash])
-
-
-def draw(rectangles: list[Rectangle]):
-    """
-    Draws multiple rectangles
-    :param rectangles: List of rectangles to draw
-    :type rectangles: list[Rectangle]
-    :return: None
-    :rtype: NoneType
-    """
-    print("\n\n--- Drawing some stuff ---\n")
-    for rectangle in rectangles:
-        for line in rectangle:
-            adapter: LineToPointAdapter = LineToPointAdapter(line)
-            for point in adapter:
-                point.draw_point()
 
 
 if __name__ == '__main__':

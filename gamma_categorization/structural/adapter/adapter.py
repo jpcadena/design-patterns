@@ -25,9 +25,6 @@ class Point:
         print(".", end=" ")
 
 
-# Adapter
-
-
 class Line:
     """
     Line class
