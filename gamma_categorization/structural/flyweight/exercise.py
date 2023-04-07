@@ -1,0 +1,3 @@
+"""
+Flyweight Coding Exercise
+"""
