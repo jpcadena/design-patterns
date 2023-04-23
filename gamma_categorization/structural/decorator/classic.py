@@ -54,7 +54,7 @@ class ColoredShape(Shape):
 
     def __init__(self, shape: Shape, color: str):
         if isinstance(shape, ColoredShape):
-            raise Exception("Can not apply same decorator twice")
+            raise ValueError("Can not apply same decorator twice")
         self.shape: Shape = shape
         self.color: str = color
 
