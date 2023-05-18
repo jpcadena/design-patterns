@@ -1,31 +1,31 @@
 """
 Monostate script
 """
+from typing import Any
 
 
 class CEO:
     """
     Chief Executive Officer class
     """
-    __shared_state = {
-        'name': 'Steve',
-        'age': 55
-    }
 
-    def __init__(self):
+    __shared_state: dict[str, Any] = {"name": "Steve", "age": 55}
+
+    def __init__(self) -> None:
         self.__dict__ = self.__shared_state
-        self.name = self.__shared_state['name']
-        self.age = self.__shared_state['age']
+        self.name: str = self.__shared_state["name"]
+        self.age: int = self.__shared_state["age"]
 
-    def __str__(self):
-        return f'{self.name} is {self.age} years old'
+    def __str__(self) -> str:
+        return f"{self.name} is {self.age} years old"
 
 
 class Monostate:
     """
     Monostate class
     """
-    _shared_state = {}
+
+    _shared_state: dict[str, Any] = {}
 
     def __new__(cls, *args, **kwargs):
         obj = super(Monostate, cls).__new__(cls, *args, **kwargs)
@@ -38,37 +38,37 @@ class CFO(Monostate):
     Chief Financial Officer class
     """
 
-    def __init__(self):
-        self.name = ''
-        self.money_managed = 0
+    def __init__(self) -> None:
+        self.name: str = ""
+        self.money_managed: int = 0
 
-    def __str__(self):
-        return f'{self.name} manages ${self.money_managed}bn'
+    def __str__(self) -> str:
+        return f"{self.name} manages ${self.money_managed}bn"
 
 
-if __name__ == '__main__':
-    ceo1 = CEO()
+if __name__ == "__main__":
+    ceo1: CEO = CEO()
     print(ceo1)
 
     ceo1.age = 66
 
-    ceo2 = CEO()
+    ceo2: CEO = CEO()
     ceo2.age = 77
     print(ceo1)
     print(ceo2)
 
-    ceo2.name = 'Tim'
+    ceo2.name = "Tim"
 
-    ceo3 = CEO()
+    ceo3: CEO = CEO()
     print(ceo1, ceo2, ceo3)
 
-    cfo1 = CFO()
-    cfo1.name = 'Sheryl'
+    cfo1: CFO = CFO()
+    cfo1.name = "Sheryl"
     cfo1.money_managed = 1
 
     print(cfo1)
 
-    cfo2 = CFO()
-    cfo2.name = 'Ruth'
+    cfo2: CFO = CFO()
+    cfo2.name = "Ruth"
     cfo2.money_managed = 10
-    print(cfo1, cfo2, sep='\n')
+    print(cfo1, cfo2, sep="\n")

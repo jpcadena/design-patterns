@@ -7,6 +7,7 @@ class Rectangle:
     """
     Rectangle class
     """
+
     def __init__(self, width: int, height: int) -> None:
         self._height: int = height
         self._width: int = width
@@ -21,7 +22,7 @@ class Rectangle:
         return self._width * self._height
 
     def __str__(self) -> str:
-        return f'Width: {self.width}, height: {self.height}'
+        return f"Width: {self.width}, height: {self.height}"
 
     @property
     def width(self) -> int:
@@ -41,7 +42,7 @@ class Rectangle:
         :return: None
         :rtype: NoneType
         """
-        self._width: int = value
+        self._width = value
 
     @property
     def height(self) -> int:
@@ -61,13 +62,14 @@ class Rectangle:
         :return: None
         :rtype: NoneType
         """
-        self._height: int = value
+        self._height = value
 
 
 class Square(Rectangle):
     """
     Square class inherits from Rectangle
     """
+
     def __init__(self, size: int) -> None:
         Rectangle.__init__(self, size, size)
 
@@ -91,7 +93,7 @@ def use_it(rectangle: Rectangle) -> None:
     width: int = rectangle.width
     rectangle.height = 10  # unpleasant side effect
     expected: int = width * 10
-    print(f'Expected an area of {expected}, got {rectangle.area}')
+    print(f"Expected an area of {expected}, got {rectangle.area}")
 
 
 my_rectangle: Rectangle = Rectangle(2, 3)

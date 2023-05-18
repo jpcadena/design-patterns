@@ -22,14 +22,15 @@ class CodeBuilder:
     """
     Code Builder class
     """
+
     INDENT_STEP = 2
 
     def __init__(self, root_name) -> None:
         self.root_name = root_name
-        self.indent = 0
-        self.fields = []
+        self.indent: int = 0
+        self.fields: list[tuple[str, str]] = []
 
-    def add_field(self, field_type, name):
+    def add_field(self, field_type: str, name: str):
         """
         Method to add a field as class attributes
         :param field_type: Name of the attribute
@@ -45,7 +46,10 @@ class CodeBuilder:
     def __str__(self) -> str:
         if not self.fields:
             return f"class {self.root_name}:\n  pass"
-        lines = [f"class {self.root_name}:", "  def __init__(self):"]
+        lines: list[str] = [
+            f"class {self.root_name}:",
+            "  def __init__(self):",
+        ]
         self.indent += self.INDENT_STEP
         for field in self.fields:
             lines.append(f"    self.{field[0]} = {field[1]}")
@@ -53,9 +57,9 @@ class CodeBuilder:
         return "\n".join(lines)
 
 
-code_builder = CodeBuilder('Person').\
-    add_field('name', '""').\
-    add_field('age', '0')
+code_builder: CodeBuilder = (
+    CodeBuilder("Person").add_field("name", '""').add_field("age", "0")
+)
 print(code_builder)
 
 # Change f'strings to format(vars) instead for UnitTest at Python 3.5

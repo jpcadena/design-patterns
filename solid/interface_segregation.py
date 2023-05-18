@@ -8,6 +8,7 @@ class Machine:
     """
     Machine class
     """
+
     def print(self, document):
         """
         Print method
@@ -43,6 +44,7 @@ class MultiFunctionPrinter(Machine):
     """
     Multi Function Printer class
     """
+
     def print(self, document) -> None:
         pass
 
@@ -67,7 +69,7 @@ class OldFashionedPrinter(Machine):
 
     def scan(self, document):
         """Not supported!"""
-        raise NotImplementedError('Printer cannot scan!')
+        raise NotImplementedError("Printer cannot scan!")
 
 
 class Printer:

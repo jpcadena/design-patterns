@@ -8,7 +8,7 @@ class Creature:
     Creature class
     """
 
-    def __init__(self, game):
+    def __init__(self, game) -> None:
         self.game: Game = game
 
 
@@ -17,7 +17,7 @@ class Goblin(Creature):
     Goblin class that inherits from Creature
     """
 
-    def __init__(self, game):
+    def __init__(self, game) -> None:
         super().__init__(game)
         game.creatures.append(self)
 
@@ -42,9 +42,13 @@ class Goblin(Creature):
         :rtype: int
         """
         defense: int = 1
-        num_goblins: int = sum(
-            isinstance(creature, Goblin) for creature in self.game.creatures
-        ) - 1
+        num_goblins: int = (
+                sum(
+                    isinstance(creature, Goblin)
+                    for creature in self.game.creatures
+                )
+                - 1
+        )
         defense += num_goblins
         return defense
 
@@ -68,5 +72,5 @@ class Game:
     Game class.
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.creatures: list[Creature] = []

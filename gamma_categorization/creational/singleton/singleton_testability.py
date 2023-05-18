@@ -3,18 +3,21 @@ Singleton Testability script
 """
 import os
 import unittest
+from typing import Any
 
 
 class Singleton(type):
     """
     Singleton class that inherits from type
     """
+
     _instances: dict = {}
 
-    def __call__(cls, *args, **kwargs):
+    def __call__(cls, *args: tuple[Any, ...], **kwargs: dict[str, Any]) -> Any:
         if cls not in cls._instances:
-            cls._instances[cls] = super(Singleton, cls).__call__(*args,
-                                                                 **kwargs)
+            cls._instances[cls] = super(Singleton, cls).__call__(
+                *args, **kwargs
+            )
         return cls._instances[cls]
 
 
@@ -23,19 +26,21 @@ class Database(metaclass=Singleton):
     Database class that uses Singleton as its metaclass
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.population: dict[str, int] = {}
-        encoding: str = 'utf-8'
+        encoding: str = "utf-8"
         file_path: str = os.path.join(
-            os.path.dirname(__file__), '..', '..', '..', 'data', 'capitals.txt'
+            os.path.dirname(__file__), "..", "..", "..", "data", "capitals.txt"
         )
         try:
-            with open(file_path, 'r', encoding=encoding) as file:
+            with open(file_path, "r", encoding=encoding) as file:
                 lines: list[str] = [line.strip() for line in file]
-                self.population = {lines[i]: int(lines[i + 1]) for i in
-                                   range(0, len(lines), 2)}
+                self.population = {
+                    lines[i]: int(lines[i + 1])
+                    for i in range(0, len(lines), 2)
+                }
         except IOError:
-            print('Could not read file:', file_path)
+            print("Could not read file:", file_path)
 
 
 class SingletonRecordFinder:
@@ -62,10 +67,10 @@ class ConfigurableRecordFinder:
     Configurable record finder class
     """
 
-    def __init__(self, database):
-        self.database = database
+    def __init__(self, database: Database) -> None:
+        self.database: Database = database
 
-    def total_population(self, cities) -> int:
+    def total_population(self, cities: list[str]) -> int:
         """
         Calculates total population
         :param cities: List of cities
@@ -80,19 +85,16 @@ class DummyDatabase:
     """
     Dummy database class
     """
-    population: dict[str, int] = {
-        'alpha': 1,
-        'beta': 2,
-        'gamma': 3
-    }
 
-    def get_population(self, name) -> int:
+    population: dict[str, int] = {"alpha": 1, "beta": 2, "gamma": 3}
+
+    def get_population(self, name: str) -> int:
         """
         Get population
-        :param name:
-        :type name:
-        :return:
-        :rtype:
+        :param name: The name of the population
+        :type name: str
+        :return: The population
+        :rtype: int
         """
         return self.population[name]
 
@@ -103,10 +105,10 @@ class SingletonTests(unittest.TestCase):
     """
 
     @classmethod
-    def setUpClass(cls):
-        cls.ddb: DummyDatabase = DummyDatabase()
+    def setUpClass(cls) -> None:
+        cls.ddb = DummyDatabase()
 
-    def test_is_singleton(self):
+    def test_is_singleton(self) -> None:
         """
         Test function for is_singleton
         :return:
@@ -116,23 +118,23 @@ class SingletonTests(unittest.TestCase):
         db2: Database = Database()
         self.assertTrue(db1 is db2)
 
-    def test_singleton_total_population(self):
-        """ This tests on a live database :( """
+    def test_singleton_total_population(self) -> None:
+        """This tests on a live database :("""
         found_record: SingletonRecordFinder = SingletonRecordFinder()
-        names: list[str] = ['Seoul', 'Mexico City']
+        names: list[str] = ["Seoul", "Mexico City"]
         total_population: int = found_record.total_population(names)
         self.assertEqual(total_population, 17500000 + 17400000)
         # what if these change?
 
-    def test_dependent_total_population(self):
+    def test_dependent_total_population(self) -> None:
         """
         Test function for dependent total population
-        :return:
-        :rtype:
+        :return: None
+        :rtype: NoneType
         """
         crf: ConfigurableRecordFinder = ConfigurableRecordFinder(self.ddb)
-        self.assertEqual(crf.total_population(['alpha', 'beta']), 3)
+        self.assertEqual(crf.total_population(["alpha", "beta"]), 3)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

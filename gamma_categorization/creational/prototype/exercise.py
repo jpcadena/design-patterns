@@ -33,7 +33,8 @@ class Line:
         :rtype: Line
         """
         start_copy: Point = Point(
-            self.start.x_coordinate, self.start.y_coordinate)
+            self.start.x_coordinate, self.start.y_coordinate
+        )
         end_copy: Point = Point(self.end.x_coordinate, self.end.y_coordinate)
         return Line(start_copy, end_copy)
 

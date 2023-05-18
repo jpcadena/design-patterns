@@ -2,6 +2,7 @@
 Builder script
 """
 
+
 # text: str = 'hello'
 # parts: list[str] = ['<p>', text, '</p>']
 # print(''.join(parts))
@@ -18,24 +19,25 @@ class HtmlElement:
     """
     HTML Element class
     """
+
     indent_size: int = 2
 
-    def __init__(self, name: str = '', text: str = ''):
+    def __init__(self, name: str = "", text: str = ""):
         self.name: str = name
         self.text: str = text
         self.elements: list = []
 
     def __str__(self, indent: int = 0) -> str:
         lines: list[str] = []
-        i: str = ' ' * (indent * self.indent_size)
-        lines.append(f'{i}<{self.name}>')
+        i: str = " " * (indent * self.indent_size)
+        lines.append(f"{i}<{self.name}>")
         if self.text:
-            text_indent: str = ' ' * ((indent + 1) * self.indent_size)
-            lines.append(f'{text_indent}{self.text}')
+            text_indent: str = " " * ((indent + 1) * self.indent_size)
+            lines.append(f"{text_indent}{self.text}")
         for element in self.elements:
             lines.append(element.__str__(indent + 1))
-        lines.append(f'{i}</{self.name}')
-        return '\n'.join(lines)
+        lines.append(f"{i}</{self.name}")
+        return "\n".join(lines)
 
     # @staticmethod
     # def create(name: str):
@@ -64,12 +66,12 @@ class HtmlBuilder:
         self.__root.elements.append(HtmlElement(child_name, child_text))
         # return self  # to apply chained method "fluently"
 
-    def __str__(self):
+    def __str__(self) -> str:
         return str(self.__root)
 
 
-html_builder: HtmlBuilder = HtmlBuilder('ul')
-html_builder.add_child('li', 'hello')
-html_builder.add_child('li', 'world')
-print('Ordinary builder')
+html_builder: HtmlBuilder = HtmlBuilder("ul")
+html_builder.add_child("li", "hello")
+html_builder.add_child("li", "world")
+print("Ordinary builder")
 print(html_builder)

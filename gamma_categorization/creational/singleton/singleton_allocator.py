@@ -8,26 +8,25 @@ class Database:
     """
     Database class
     """
+
     initialized: bool = False
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.db_id: int = random.randint(1, 101)
-        print('Generated an id of', self.db_id)
-        print('Loading database from file')
+        print("Generated an id of", self.db_id)
+        print("Loading database from file")
 
     _instance = None
 
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
-            cls._instance = super(Database, cls) \
-                .__new__(cls, *args, **kwargs)
-
+            cls._instance = super(Database, cls).__new__(cls, *args, **kwargs)
         return cls._instance
 
 
 database: Database = Database()
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     d1: Database = Database()
     d2: Database = Database()
 

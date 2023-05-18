@@ -1,7 +1,7 @@
 """
 Virtual Proxy script
 """
-from typing import Union
+from typing import Union, Optional
 
 
 class Bitmap:
@@ -29,7 +29,7 @@ class LazyBitmap:
 
     def __init__(self, filename: str):
         self.filename: str = filename
-        self._bitmap = None
+        self._bitmap: Optional[Bitmap] = None
 
     def draw(self) -> None:
         """
@@ -38,7 +38,7 @@ class LazyBitmap:
         :rtype: NoneType
         """
         if not self._bitmap:
-            self._bitmap: Bitmap = Bitmap(self.filename)
+            self._bitmap = Bitmap(self.filename)
         self._bitmap.draw()
 
 

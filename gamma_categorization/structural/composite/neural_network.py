@@ -36,9 +36,11 @@ class Neuron(Connectable):
         self.inputs: list = []
         self.outputs: list = []
 
-    def __str__(self):
-        return f"{self.name} - {len(self.inputs)} inputs," \
-               f" {len(self.outputs)} outputs"
+    def __str__(self) -> str:
+        return (
+            f"{self.name} - {len(self.inputs)} inputs," f" {len(self.outputs)}"
+            f" outputs"
+        )
 
     def __iter__(self):
         yield self
@@ -66,15 +68,15 @@ class NeuronLayer(list, Connectable):
         for neuron in range(0, count):
             self.append(Neuron(f"{self.name}_{neuron}"))
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name} with {len(self)} neurons"
 
 
-if __name__ == '__main__':
-    neuron1: Neuron = Neuron('N1')
-    neuron2: Neuron = Neuron('N2')
-    layer1: NeuronLayer = NeuronLayer('L1', 3)
-    layer2: NeuronLayer = NeuronLayer('L2', 4)
+if __name__ == "__main__":
+    neuron1: Neuron = Neuron("N1")
+    neuron2: Neuron = Neuron("N2")
+    layer1: NeuronLayer = NeuronLayer("L1", 3)
+    layer2: NeuronLayer = NeuronLayer("L2", 4)
 
     neuron1.connect_to(neuron2)
     neuron1.connect_to(layer1)

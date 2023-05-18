@@ -8,14 +8,16 @@ class Person:
     Person class
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.name: str = None
         self.position: str = None
         self.date_of_birth: str = None
 
-    def __str__(self):
-        return f'{self.name} born on {self.date_of_birth} and works as' \
-               f' {self.position}'
+    def __str__(self) -> str:
+        return (
+            f"{self.name} born on {self.date_of_birth} and works as"
+            f" {self.position}"
+        )
 
     @staticmethod
     def new():
@@ -31,10 +33,11 @@ class PersonBuilder:
     """
     Person Builder class
     """
-    def __init__(self):
+
+    def __init__(self) -> None:
         self.person: Person = Person()
 
-    def build(self):
+    def build(self) -> Person:
         """
         Build a Person object
         :return: Person instance
@@ -47,6 +50,7 @@ class PersonInfoBuilder(PersonBuilder):
     """
     Person Info Builder class that inherits from Person Builder
     """
+
     def called(self, name: str):
         """
         Assign Name of person
@@ -63,6 +67,7 @@ class PersonJobBuilder(PersonInfoBuilder):
     """
     Person Job Builder class that inherits from Person Info Builder
     """
+
     def works_as_a(self, position: str):
         """
         Assign job position to person
@@ -79,6 +84,7 @@ class PersonBirthDateBuilder(PersonJobBuilder):
     """
     Person Birthdate Builder class that inherits from Person Job Builder
     """
+
     def born(self, date_of_birth: str):
         """
         Assign date of birth to person
@@ -92,6 +98,10 @@ class PersonBirthDateBuilder(PersonJobBuilder):
 
 
 person_birthdate_builder: PersonBirthDateBuilder = PersonBirthDateBuilder()
-me: Person = person_birthdate_builder.\
-    called('Dimitri').works_as_a('Quant').born('1/1/1980').build()
+me: Person = (
+    person_birthdate_builder.called("Dimitri")
+    .works_as_a("Quant")
+    .born("1/1/1980")
+    .build()
+)
 print(me)

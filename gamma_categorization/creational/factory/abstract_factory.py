@@ -35,7 +35,7 @@ class Coffee(HotDrink):
     """
 
     def consume(self) -> None:
-        print('This coffee is delicious')
+        print("This coffee is delicious")
 
 
 class HotDrinkFactory(ABC):
@@ -44,7 +44,7 @@ class HotDrinkFactory(ABC):
     """
 
     @abstractmethod
-    def prepare(self, amount) -> HotDrink:
+    def prepare(self, amount: int) -> HotDrink:
         """
         Abstract prepare method based on amount
         :param amount: Quantity to prepare
@@ -59,8 +59,8 @@ class TeaFactory(HotDrinkFactory):
     Tea Factory class that inherits from Hot Drink Factory
     """
 
-    def prepare(self, amount) -> Tea:
-        print(f'Put in tea bag, boil water, pour {amount}ml, enjoy!')
+    def prepare(self, amount: int) -> Tea:
+        print(f"Put in tea bag, boil water, pour {amount}ml, enjoy!")
         return Tea()
 
 
@@ -69,8 +69,8 @@ class CoffeeFactory(HotDrinkFactory):
     Coffee Factory class that inherits from Hot Drink Factory
     """
 
-    def prepare(self, amount) -> Coffee:
-        print(f'Grind some beans, boil water, pour {amount}ml, enjoy!')
+    def prepare(self, amount: int) -> Coffee:
+        print(f"Grind some beans, boil water, pour {amount}ml, enjoy!")
         return Coffee()
 
 
@@ -83,18 +83,20 @@ class HotDrinkMachine:
         """
         Available Drink that inherits from Enum
         """
+
         COFFEE = auto()
         TEA = auto()
 
     factories: dict[AvailableDrink, Type[CoffeeFactory | TeaFactory]] = {
         AvailableDrink.COFFEE: CoffeeFactory,
-        AvailableDrink.TEA: TeaFactory
+        AvailableDrink.TEA: TeaFactory,
     }
 
     def __init__(self) -> None:
         self.factory_instances: dict = {
-            drink: drink_factory() for drink, drink_factory in
-            self.factories.items()}
+            drink: drink_factory()
+            for drink, drink_factory in self.factories.items()
+        }
 
     def make_drink(self) -> HotDrink:
         """
@@ -102,12 +104,13 @@ class HotDrinkMachine:
         :return: HotDrink instance
         :rtype: HotDrink
         """
-        print('Available drinks:')
+        print("Available drinks:")
         for index, drink in enumerate(self.factory_instances):
             print(f"{index}: {drink.name.title()}")
-        drink_input: int = int(input(
-            f'Please pick drink (0-{len(self.factory_instances) - 1}): '))
-        amount: int = int(input('Specify amount: '))
+        drink_input: int = int(
+            input(f"Please pick drink (0-{len(self.factory_instances) - 1}): ")
+        )
+        amount: int = int(input("Specify amount: "))
         drink_enum = list(self.factory_instances.keys())[drink_input]
         return self.factory_instances[drink_enum].prepare(amount)
 

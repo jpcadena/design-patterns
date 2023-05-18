@@ -40,32 +40,50 @@ class Rectangle(list[Line]):
     Rectangle class
     """
 
-    def __init__(
-            self, x_coordinate: int, y_coordinate: int, width: int,
-            height: int):
+    def __init__(self, x_coordinate: int, y_coordinate: int, width: int,
+                 height: int):
         super().__init__()
-        self.append(Line(Point(x_coordinate, y_coordinate),
-                         Point(x_coordinate + width, y_coordinate)))
-        self.append(Line(Point(x_coordinate + width, y_coordinate),
-                         Point(x_coordinate + width, y_coordinate + height)))
-        self.append(Line(Point(x_coordinate, y_coordinate),
-                         Point(x_coordinate, y_coordinate + height)))
-        self.append(Line(Point(x_coordinate, y_coordinate + height),
-                         Point(x_coordinate + width, y_coordinate + height)))
+        self.append(
+            Line(
+                Point(x_coordinate, y_coordinate),
+                Point(x_coordinate + width, y_coordinate),
+            )
+        )
+        self.append(
+            Line(
+                Point(x_coordinate + width, y_coordinate),
+                Point(x_coordinate + width, y_coordinate + height),
+            )
+        )
+        self.append(
+            Line(
+                Point(x_coordinate, y_coordinate),
+                Point(x_coordinate, y_coordinate + height),
+            )
+        )
+        self.append(
+            Line(
+                Point(x_coordinate, y_coordinate + height),
+                Point(x_coordinate + width, y_coordinate + height),
+            )
+        )
 
 
 class LineToPointAdapter(list[Point]):
     """
     Adapter for Line to Point class
     """
+
     count: int = 0
 
     def __init__(self, line: Line):
         super().__init__()
         self.count += 1
-        print(f"{self.count}: Generating points for line ["
-              f"{line.start.x_coordinate},{line.start.y_coordinate}] -> ["
-              f"{line.end.x_coordinate},{line.end.y_coordinate}]")
+        print(
+            f"{self.count}: Generating points for line ["
+            f"{line.start.x_coordinate},{line.start.y_coordinate}] -> ["
+            f"{line.end.x_coordinate},{line.end.y_coordinate}]"
+        )
         left = min(line.start.x_coordinate, line.end.x_coordinate)
         right = max(line.start.x_coordinate, line.end.x_coordinate)
         top = min(line.start.y_coordinate, line.end.y_coordinate)
@@ -78,7 +96,7 @@ class LineToPointAdapter(list[Point]):
                 self.append(Point(x_value, top))
 
 
-def draw(rectangles: list[Rectangle]):
+def draw(rectangles: list[Rectangle]) -> None:
     """
     Draws multiple rectangles
     :param rectangles: List of rectangles to draw
@@ -94,7 +112,7 @@ def draw(rectangles: list[Rectangle]):
                 point.draw_point()
 
 
-if __name__ == '__main__':
-    rectangles_list: list[Rectangle] = [
-        Rectangle(1, 1, 10, 10), Rectangle(3, 3, 6, 6)]
+if __name__ == "__main__":
+    rectangles_list: list[Rectangle] = [Rectangle(1, 1, 10, 10),
+                                        Rectangle(3, 3, 6, 6)]
     draw(rectangles_list)

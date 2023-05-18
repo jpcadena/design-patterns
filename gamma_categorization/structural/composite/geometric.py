@@ -1,6 +1,7 @@
 """
 Geometric shape script for Composite design pattern
 """
+from typing import Optional
 
 
 class GraphicObject:
@@ -8,8 +9,8 @@ class GraphicObject:
     Graphic object class.
     """
 
-    def __init__(self, color: str = None, name: str = 'Group'):
-        self.color: str = color
+    def __init__(self, color: Optional[str] = None, name: str = "Group"):
+        self.color: Optional[str] = color
         self.children: list = []
         self._name: str = name
 
@@ -62,12 +63,12 @@ class Square(GraphicObject):
 
 if __name__ == "__main__":
     drawing: GraphicObject = GraphicObject(name="My drawing")
-    drawing.children.append(Circle('Red'))
-    drawing.children.append(Square('Green'))
+    drawing.children.append(Circle("Red"))
+    drawing.children.append(Square("Green"))
 
     group: GraphicObject = GraphicObject()
-    group.children.append(Circle('Blue'))
-    group.children.append(Square('Yellow'))
+    group.children.append(Circle("Blue"))
+    group.children.append(Square("Yellow"))
     drawing.children.append(group)
 
     print(str(drawing))

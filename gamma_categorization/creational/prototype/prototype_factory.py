@@ -15,7 +15,7 @@ class Address:
         self.city: str = city
 
     def __str__(self) -> str:
-        return f'{self.street_address}, Suite #{self.suite}, {self.city}'
+        return f"{self.street_address}, Suite #{self.suite}, {self.city}"
 
 
 class Employee:
@@ -23,22 +23,23 @@ class Employee:
     Employee class
     """
 
-    def __init__(self, name, address) -> None:
+    def __init__(self, name: str, address: Address) -> None:
         self.name: str = name
-        self.address: str = address
+        self.address: Address = address
 
     def __str__(self) -> str:
-        return f'{self.name} works at {self.address}'
+        return f"{self.name} works at {self.address}"
 
 
 class EmployeeFactory:
     """
     Employee Factory class
     """
-    main_office_employee: Employee = Employee(
-        "", Address("123 East Dr", 0, "London"))
-    aux_office_employee: Employee = Employee(
-        "", Address("123B East Dr", 0, "London"))
+
+    main_office_employee: Employee = Employee("", Address("123 East Dr", 0,
+                                                          "London"))
+    aux_office_employee: Employee = Employee("", Address("123B East Dr", 0,
+                                                         "London"))
 
     @staticmethod
     def __new_employee(proto: Employee, name: str, suite: int) -> Employee:
@@ -59,8 +60,7 @@ class EmployeeFactory:
         :rtype: Employee
         """
         return EmployeeFactory.__new_employee(
-            EmployeeFactory.main_office_employee,
-            name, suite
+            EmployeeFactory.main_office_employee, name, suite
         )
 
     @staticmethod
@@ -75,8 +75,7 @@ class EmployeeFactory:
         :rtype: Employee
         """
         return EmployeeFactory.__new_employee(
-            EmployeeFactory.aux_office_employee,
-            name, suite
+            EmployeeFactory.aux_office_employee, name, suite
         )
 
 

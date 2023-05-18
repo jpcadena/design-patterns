@@ -8,6 +8,7 @@ class Color(Enum):
     """
     Color class based on Enum
     """
+
     RED: int = 1
     GREEN = 2
     BLUE = 3
@@ -17,6 +18,7 @@ class Size(Enum):
     """
     Size class based on Enum
     """
+
     SMALL: int = 1
     MEDIUM: int = 2
     LARGE: int = 3
@@ -26,6 +28,7 @@ class Product:
     """
     Product class based on Product
     """
+
     def __init__(self, name: str, color: Color, size: Size):
         self.name: str = name
         self.color: Color = color
@@ -34,13 +37,15 @@ class Product:
 
 # Class with many filter methods with different specs is WRONG
 
+
 class ProductFilter:
     """
     Product Filter class
     """
 
     def filter_by_color(
-            self, products: list[Product], color: Color) -> Product:
+            self, products: list[Product], color: Color
+    ) -> Product:
         """
         Filter by color method
         :param products: list of products
@@ -133,6 +138,7 @@ class ColorSpecification(Specification):
     """
     Color Specification class based on Specification
     """
+
     def __init__(self, color: Color):
         self.color: Color = color
 
@@ -144,6 +150,7 @@ class SizeSpecification(Specification):
     """
     Size Specification class based on Specification
     """
+
     def __init__(self, size: Size):
         self.size: Size = size
 
@@ -160,56 +167,58 @@ class SizeSpecification(Specification):
 #         return self.spec1.is_satisfied(item) and \
 #                self.spec2.is_satisfied(item)
 
+
 class AndSpecification(Specification):
     """
     And Specification class based on Specification
     """
-    def __init__(self, *args):
+
+    def __init__(self, *args) -> None:
         self.args: tuple = args
 
     def is_satisfied(self, item: Product) -> bool:
-        return all(map(
-            lambda spec: spec.is_satisfied(item), self.args))
+        return all(map(lambda spec: spec.is_satisfied(item), self.args))
 
 
 class BetterFilter(Filter):
     """
     Better Filter class based on Filter
     """
+
     def filter(self, items: list[Product], spec: Specification):
         for item in items:
             if spec.is_satisfied(item):
                 yield item
 
 
-apple: Product = Product('Apple', Color.GREEN, Size.SMALL)
-tree: Product = Product('Tree', Color.GREEN, Size.LARGE)
-house: Product = Product('House', Color.BLUE, Size.LARGE)
+apple: Product = Product("Apple", Color.GREEN, Size.SMALL)
+tree: Product = Product("Tree", Color.GREEN, Size.LARGE)
+house: Product = Product("House", Color.BLUE, Size.LARGE)
 
 my_products: list[Product] = [apple, tree, house]
 
 pf: ProductFilter = ProductFilter()
-print('Green products (old):')
+print("Green products (old):")
 for p in pf.filter_by_color(my_products, Color.GREEN):
-    print(f' - {p.name} is green')
+    print(f" - {p.name} is green")
 
 # ^ BEFORE
 
 # v AFTER
 bf = BetterFilter()
 
-print('Green products (new):')
+print("Green products (new):")
 green: ColorSpecification = ColorSpecification(Color.GREEN)
 for p in bf.filter(my_products, green):
-    print(f' - {p.name} is green')
+    print(f" - {p.name} is green")
 
-print('Large products:')
+print("Large products:")
 large: SizeSpecification = SizeSpecification(Size.LARGE)
 for p in bf.filter(my_products, large):
-    print(f' - {p.name} is large')
+    print(f" - {p.name} is large")
 
-print('Large blue items:')
+print("Large blue items:")
 # large_blue = AndSpecification(large, ColorSpecification(Color.BLUE))
 large_blue: AndSpecification = large & ColorSpecification(Color.BLUE)
 for p in bf.filter(my_products, large_blue):
-    print(f' - {p.name} is large and blue')
+    print(f" - {p.name} is large and blue")

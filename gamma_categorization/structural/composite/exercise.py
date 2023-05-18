@@ -1,7 +1,7 @@
 """
 Composite Coding Exercise
 """
-from typing import Union
+from typing import Union, Generator, Any, Iterator
 
 
 class Summable:
@@ -9,7 +9,7 @@ class Summable:
     Summable class that provides the sum property.
     """
 
-    def __iter__(self):
+    def __iter__(self) -> Iterator[Any]:
         raise NotImplementedError
 
     @property
@@ -21,8 +21,12 @@ class Summable:
         """
         result: int = 0
         for item in self:
-            if isinstance(item, (int, SingleValue)):
+            if isinstance(item, int):
                 result += item
+            elif isinstance(item, SingleValue):
+                result += (
+                    item.value
+                )  # Assuming SingleValue has a value attribute
             elif isinstance(item, ManyValues):
                 result += item.sum
         return result
@@ -34,9 +38,9 @@ class SingleValue(Summable):
     """
 
     def __init__(self, value: int):
-        self.value = value
+        self.value: int = value
 
-    def __iter__(self):
+    def __iter__(self) -> Generator[int, Any, None]:
         yield self.value
 
 
@@ -45,7 +49,7 @@ class ManyValues(list, Summable):
     Many Values class that inherits from list and Summable
     """
 
-    def append(self, value: Union[int, SingleValue, 'ManyValues']) -> None:
+    def append(self, value: Union[int, SingleValue, "ManyValues"]) -> None:
         """
         Overwrite for append method from lists
         :param value: The value to append

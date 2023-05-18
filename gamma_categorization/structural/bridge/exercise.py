@@ -49,7 +49,7 @@ class Shape(ABC):
         self.renderer: Renderer = renderer
         self.name: Optional[str] = None
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"Drawing {self.name} as {self.renderer.what_to_render_as}"
 
 
@@ -60,7 +60,7 @@ class Triangle(Shape):
 
     def __init__(self, renderer: Renderer):
         super().__init__(renderer)
-        self.name = 'Triangle'
+        self.name = "Triangle"
 
 
 class Square(Shape):
@@ -70,7 +70,7 @@ class Square(Shape):
 
     def __init__(self, renderer: Renderer):
         super().__init__(renderer)
-        self.name: str = 'Square'
+        self.name: str = "Square"
 
 
 # Usage example

@@ -8,7 +8,8 @@ class Journal:
     """
     Journal class
     """
-    def __init__(self):
+
+    def __init__(self) -> None:
         """
         Initialize Journal
         """
@@ -24,7 +25,7 @@ class Journal:
         :rtype: NoneType
         """
         self.count += 1
-        self.entries.append(f'{self.count}: {text}')
+        self.entries.append(f"{self.count}: {text}")
 
     def remove_entry(self, pos: int) -> None:
         """
@@ -37,7 +38,7 @@ class Journal:
         del self.entries[pos]
 
     def __str__(self) -> str:
-        return '\n'.join(self.entries)
+        return "\n".join(self.entries)
 
     # Anti-pattern: God object where all functionality including:
     # crud, persistence, etc. goes into same class.
@@ -77,7 +78,7 @@ class PersistenceManager:
         :return: None
         :rtype: NoneType
         """
-        with open(file=filename, mode='w', encoding='utf-8') as file:
+        with open(file=filename, mode="w", encoding="utf-8") as file:
             file.write(str(journal))
             file.close()
 
@@ -103,8 +104,8 @@ class PersistenceManager:
 
 
 my_journal: Journal = Journal()
-my_journal.add_entry('I cried today.')
-my_journal.add_entry('I ate a bug.')
-print(f'Journal entries:\n{my_journal}')
-FILE: str = r'/data/journal.txt'
+my_journal.add_entry("I cried today.")
+my_journal.add_entry("I ate a bug.")
+print(f"Journal entries:\n{my_journal}")
+FILE: str = r"/data/journal.txt"
 PersistenceManager.save_to_file(my_journal, FILE)

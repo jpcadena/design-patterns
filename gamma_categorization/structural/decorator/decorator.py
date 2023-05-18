@@ -2,15 +2,15 @@
 Python functional Decorator script
 """
 import time
-from typing import Any
+from typing import Any, Callable
 
 
-def time_it(func: callable) -> Any:
+def time_it(func: Callable[[], Any]) -> Any:
     """
     Decorator function that calculates the time that the function takes
      to execute
     :param func: The function to be called
-    :type func: callable
+    :type func: Callable
     :return: Return value from the wrapped function
     :rtype: Any
     """

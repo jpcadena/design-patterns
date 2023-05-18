@@ -3,12 +3,14 @@ Dependency Inversion Principle
 """
 from abc import abstractmethod
 from enum import Enum
+from typing import Generator
 
 
 class Relationship(Enum):
     """
     Relationship class based on Enum
     """
+
     PARENT = 0
     CHILD = 1
     SIBLING = 2
@@ -18,6 +20,7 @@ class Person:
     """
     Person class with name
     """
+
     def __init__(self, name: str):
         self.name: str = name
 
@@ -26,6 +29,7 @@ class RelationshipBrowser:
     """
     Relationship Browser class
     """
+
     @abstractmethod
     def find_all_children_of(self, name: str) -> None:
         """
@@ -41,7 +45,8 @@ class Relationships(RelationshipBrowser):
     """
     Low-level Relationship Browser class
     """
-    relations: list = []
+
+    relations: list[tuple[Person, Enum, Person]] = []
 
     def add_parent_and_child(self, parent: Person, child: Person) -> None:
         """
@@ -56,10 +61,12 @@ class Relationships(RelationshipBrowser):
         self.relations.append((parent, Relationship.PARENT, child))
         self.relations.append((child, Relationship.PARENT, parent))
 
-    def find_all_children_of(self, name: str) -> str:
+    def find_all_children_of(self, name: str) -> Generator[str, None, None]:
         for relationship in self.relations:
-            if relationship[0].name == name and \
-                    relationship[1] == Relationship.PARENT:
+            if (
+                    relationship[0].name == name
+                    and relationship[1] == Relationship.PARENT
+            ):
                 yield relationship[2].name
 
 
@@ -67,6 +74,7 @@ class Research:
     """
     Research class
     """
+
     # dependency on a low-level module directly
     # bad because strongly dependent on e.g. storage type
 
@@ -79,12 +87,12 @@ class Research:
 
     def __init__(self, browser: RelationshipBrowser) -> None:
         for parent in browser.find_all_children_of("John"):
-            print(f'John has a child called {parent}')
+            print(f"John has a child called {parent}")
 
 
-my_parent: Person = Person('John')
-child1: Person = Person('Chris')
-child2: Person = Person('Matt')
+my_parent: Person = Person("John")
+child1: Person = Person("Chris")
+child2: Person = Person("Matt")
 
 # low-level module
 relationships: Relationships = Relationships()

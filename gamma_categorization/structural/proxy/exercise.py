@@ -17,7 +17,7 @@ class Person:
         :return: Drinking
         :rtype: str
         """
-        return 'drinking'
+        return "drinking"
 
     def drive(self) -> str:
         """
@@ -25,7 +25,7 @@ class Person:
         :return: Driving
         :rtype: str
         """
-        return 'driving'
+        return "driving"
 
     def drink_and_drive(self) -> str:
         """
@@ -33,7 +33,7 @@ class Person:
         :return: Driving while drunk
         :rtype: str
         """
-        return 'driving while drunk'
+        return "driving while drunk"
 
 
 class ResponsiblePerson:
@@ -54,7 +54,7 @@ class ResponsiblePerson:
         return self.person.age
 
     @age.setter
-    def age(self, value):
+    def age(self, value: int) -> None:
         self.person.age = value
 
     def drink(self) -> str:
@@ -64,7 +64,7 @@ class ResponsiblePerson:
         :rtype: str
         """
         if self.person.age < 18:
-            return 'too young'
+            return "too young"
         return self.person.drink()
 
     def drive(self) -> str:
@@ -74,7 +74,7 @@ class ResponsiblePerson:
         :rtype: str
         """
         if self.person.age < 16:
-            return 'too young'
+            return "too young"
         return self.person.drive()
 
     def drink_and_drive(self) -> str:
@@ -83,4 +83,4 @@ class ResponsiblePerson:
         :return: DEAD
         :rtype: str
         """
-        return 'dead'
+        return "dead"

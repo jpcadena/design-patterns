@@ -98,8 +98,8 @@ class MagicSquareGenerator:
         splitter: Splitter = Splitter()
         verifier: Verifier = Verifier()
         while True:
-            square: list[list[int]] = [
-                generator.generate(size) for _ in range(size)]
+            square: list[list[int]] = [generator.generate(size) for _ in
+                                       range(size)]
             split_square: list[list] = splitter.split(square)
             if verifier.verify(split_square):
                 return square

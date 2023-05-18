@@ -13,7 +13,7 @@ class Creature:
         self.attack: int = attack
         self.defense: int = defense
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f"{self.name}: ({self.attack}/{self.defense})"
 
 
@@ -39,7 +39,7 @@ class CreatureModifier:
         else:
             self.next_modifier = modifier
 
-    def handle(self):
+    def handle(self) -> None:
         """
         Handle the creature modifier
         :return: None
@@ -54,7 +54,7 @@ class DoubleAttackModifier(CreatureModifier):
     Double Attack Modifier class that inherits from Creature Modifier.
     """
 
-    def handle(self):
+    def handle(self) -> None:
         print(f"Doubling {self.creature.name}'s attack")
         self.creature.attack *= 2
         super().handle()
@@ -65,14 +65,14 @@ class IncreaseDefenseModifier(CreatureModifier):
     Increase Defense Modifier class that inherits from Creature Modifier.
     """
 
-    def handle(self):
+    def handle(self) -> None:
         if self.creature.attack <= 2:
             print(f"Increasing {self.creature.name}'s defense")
             self.creature.attack += 1
         super().handle()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     goblin: Creature = Creature("Goblin", 1, 1)
     print(goblin)
     root: CreatureModifier = CreatureModifier(goblin)

@@ -8,12 +8,13 @@ class Point:
     """
     Point class
     """
+
     def __init__(self, x_coordinate: float, y_coordinate: float):
         self.x_coordinate: float = x_coordinate
         self.y_coordinate: float = y_coordinate
 
-    def __str__(self):
-        return f'x: {self.x_coordinate}, y: {self.y_coordinate}'
+    def __str__(self) -> str:
+        return f"x: {self.x_coordinate}, y: {self.y_coordinate}"
 
     @staticmethod
     def new_cartesian_point(x_coordinate: float, y_coordinate: float):

@@ -7,27 +7,30 @@ class Person:
     """
     Person class
     """
-    def __init__(self):
+
+    def __init__(self) -> None:
         self.street_address: str = None
         self.post_code: str = None
         self.city: str = None
-
         self.company_name: str = None
         self.position: str = None
         self.annual_income: int = None
 
-    def __str__(self):
-        return f'Address: {self.street_address}, {self.city} -' \
-               f' {self.post_code}.\n' \
-               f'Employed at: {self.company_name} as a {self.position},' \
-               f' earning {self.annual_income}'
+    def __str__(self) -> str:
+        return (
+            f"Address: {self.street_address}, {self.city} -"
+            f" {self.post_code}.\n"
+            f"Employed at: {self.company_name} as a {self.position},"
+            f" earning {self.annual_income}"
+        )
 
 
 class PersonBuilder:  # facade
     """
     Builder class for Person
     """
-    def __init__(self, person: Person = Person()):
+
+    def __init__(self, person: Person = Person()) -> None:
         self.person: Person = person
 
     @property
@@ -61,6 +64,7 @@ class PersonAddressBuilder(PersonBuilder):
     """
     Person Address Builder class inherited from Person Builder
     """
+
     def __init__(self, person: Person):
         super().__init__(person)
 
@@ -102,6 +106,7 @@ class PersonJobBuilder(PersonBuilder):
     """
     Person Job Builder class inherited from Person Builder
     """
+
     def __init__(self, person: Person):
         super().__init__(person)
 
@@ -140,8 +145,13 @@ class PersonJobBuilder(PersonBuilder):
 
 
 person_builder: PersonBuilder = PersonBuilder()
-new_person = person_builder.\
-    lives.at('123 London Road').in_city('London').with_post_code('SW12PC')\
-    .works.at('Fabrikam').as_a('Engineer').earning(123000)\
+new_person = (
+    person_builder.lives.at("123 London Road")
+    .in_city("London")
+    .with_post_code("SW12PC")
+    .works.at("Fabrikam")
+    .as_a("Engineer")
+    .earning(123000)
     .build()
+)
 print(new_person)

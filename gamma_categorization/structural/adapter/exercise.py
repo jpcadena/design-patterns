@@ -21,7 +21,7 @@ class SquareToRectangleAdapter:
         self.square: Square = square
 
     @property
-    def width(self):
+    def width(self) -> int:
         """
         Width of the square
         :return: The width of the square
@@ -30,7 +30,7 @@ class SquareToRectangleAdapter:
         return self.square.side
 
     @property
-    def height(self):
+    def height(self) -> int:
         """
         Height of the square
         :return: The height of the square
@@ -44,8 +44,8 @@ def calculate_area(rectangle: SquareToRectangleAdapter) -> int:
     Calculate area of rectangle
     :param rectangle:
     :type rectangle:
-    :return:
-    :rtype:
+    :return: The area of rectangle
+    :rtype: int
     """
     return rectangle.width * rectangle.height
 

@@ -25,7 +25,7 @@ class PersonFactory:
     Person factory class
     """
 
-    def __init__(self):
+    def __init__(self) -> None:
         self.person_person_id: int = 0
 
     def create_person(self, name: str) -> Person:
@@ -42,6 +42,6 @@ class PersonFactory:
 
 
 person_factory: PersonFactory = PersonFactory()
-person_0: Person = person_factory.create_person('Tom')
-person_1: Person = person_factory.create_person('Mark')
-person_2: Person = person_factory.create_person('Travis')
+person_0: Person = person_factory.create_person("Tom")
+person_1: Person = person_factory.create_person("Mark")
+person_2: Person = person_factory.create_person("Travis")
