@@ -77,7 +77,7 @@ class BankAccountCommand(Command):
         self.account: BankAccount = account
         self.success: Optional[bool] = None
 
-    class Action(Enum):
+    class Action(int, Enum):
         """
         Action class that inherits from Python built-in Enum.
         """
