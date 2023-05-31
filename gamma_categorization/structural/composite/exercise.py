@@ -1,7 +1,7 @@
 """
 Composite Coding Exercise
 """
-from typing import Union, Generator, Any, Iterator
+from typing import Any, Generator, Iterator, Union
 
 
 class Summable:
@@ -44,7 +44,7 @@ class SingleValue(Summable):
         yield self.value
 
 
-class ManyValues(list, Summable):
+class ManyValues(list[Any], Summable):
     """
     Many Values class that inherits from list and Summable
     """

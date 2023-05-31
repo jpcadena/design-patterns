@@ -2,7 +2,7 @@
 Bridge Coding Exercise
 """
 from abc import ABC
-from typing import Optional
+from typing import Any, Optional
 
 
 class Renderer(ABC):
@@ -11,7 +11,7 @@ class Renderer(ABC):
     """
 
     @property
-    def what_to_render_as(self) -> None:
+    def what_to_render_as(self) -> Any:
         """
         What to render as
         :return: None

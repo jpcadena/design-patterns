@@ -36,10 +36,12 @@ class EmployeeFactory:
     Employee Factory class
     """
 
-    main_office_employee: Employee = Employee("", Address("123 East Dr", 0,
-                                                          "London"))
-    aux_office_employee: Employee = Employee("", Address("123B East Dr", 0,
-                                                         "London"))
+    main_office_employee: Employee = Employee(
+        "", Address("123 East Dr", 0, "London")
+    )
+    aux_office_employee: Employee = Employee(
+        "", Address("123B East Dr", 0, "London")
+    )
 
     @staticmethod
     def __new_employee(proto: Employee, name: str, suite: int) -> Employee:

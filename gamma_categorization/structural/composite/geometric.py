@@ -1,7 +1,7 @@
 """
 Geometric shape script for Composite design pattern
 """
-from typing import Optional
+from typing import Any, Optional
 
 
 class GraphicObject:
@@ -11,7 +11,7 @@ class GraphicObject:
 
     def __init__(self, color: Optional[str] = None, name: str = "Group"):
         self.color: Optional[str] = color
-        self.children: list = []
+        self.children: list[Any] = []
         self._name: str = name
 
     @property
@@ -29,7 +29,7 @@ class GraphicObject:
         :return: Object string representation
         :rtype: str
         """
-        items: list = ["*" * depth]
+        items: list[str] = ["*" * depth]
         if self.color:
             items.append(self.color)
         items.append(f"{self.name}\n")

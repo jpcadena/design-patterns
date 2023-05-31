@@ -11,7 +11,7 @@ class Singleton(type):
     Singleton class that inherits from type
     """
 
-    _instances: dict = {}
+    _instances: dict[Any, Any] = {}
 
     def __call__(cls, *args: tuple[Any, ...], **kwargs: dict[str, Any]) -> Any:
         if cls not in cls._instances:
@@ -36,8 +36,8 @@ class Database(metaclass=Singleton):
             with open(file_path, "r", encoding=encoding) as file:
                 lines: list[str] = [line.strip() for line in file]
                 self.population = {
-                    lines[i]: int(lines[i + 1])
-                    for i in range(0, len(lines), 2)
+                    lines[i]: int(lines[i + 1]) for i in
+                    range(0, len(lines), 2)
                 }
         except IOError:
             print("Could not read file:", file_path)

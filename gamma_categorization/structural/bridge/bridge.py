@@ -10,13 +10,13 @@ class Renderer(ABC):
     """
 
     def render_circle(self, radius: float) -> None:
-    """
-    Render a circle
-    :param radius: Radius of the circle
-    :type radius: float
-    :return: None
-    :rtype: NoneType
-    """
+        """
+        Render a circle
+        :param radius: Radius of the circle
+        :type radius: float
+        :return: None
+        :rtype: NoneType
+        """
 
 
 class VectorRenderer(Renderer):
@@ -25,7 +25,7 @@ class VectorRenderer(Renderer):
     """
 
     def render_circle(self, radius: float) -> None:
-    print(f"Drawing a circle of radius {radius}")
+        print(f"Drawing a circle of radius {radius}")
 
 
 class RasterRenderer(Renderer):
@@ -34,7 +34,7 @@ class RasterRenderer(Renderer):
     """
 
     def render_circle(self, radius: float) -> None:
-    print(f"Drawing pixels for a circle of radius {radius}")
+        print(f"Drawing pixels for a circle of radius {radius}")
 
 
 class Shape:
@@ -46,20 +46,20 @@ class Shape:
         self.renderer: Renderer = renderer
 
     def draw(self) -> None:
-    """
-    Draw the shape
-    :return: None
-    :rtype: NoneType
-    """
+        """
+        Draw the shape
+        :return: None
+        :rtype: NoneType
+        """
 
     def resize(self, factor: int) -> None:
-    """
-    Resize the shape
-    :param factor: Factor to use for the shape
-    :type factor: int
-    :return: None
-    :rtype: NoneType
-    """
+        """
+        Resize the shape
+        :param factor: Factor to use for the shape
+        :type factor: int
+        :return: None
+        :rtype: NoneType
+        """
 
 
 class Circle(Shape):
@@ -72,10 +72,10 @@ class Circle(Shape):
         self.radius: float = radius
 
     def draw(self) -> None:
-    self.renderer.render_circle(self.radius)
+        self.renderer.render_circle(self.radius)
 
     def resize(self, factor: int) -> None:
-    self.radius *= factor
+        self.radius *= factor
 
 
 if __name__ == "__main__":

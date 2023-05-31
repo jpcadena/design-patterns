@@ -3,6 +3,7 @@ Neural network script for Composite design pattern
 """
 from abc import ABC
 from collections.abc import Iterable
+from typing import Any, Generator, Self
 
 
 class Connectable(Iterable, ABC):
@@ -10,7 +11,7 @@ class Connectable(Iterable, ABC):
     Connectable class based on Iterable and Abstract Base Class.
     """
 
-    def connect_to(self, other) -> None:
+    def connect_to(self, other: Self) -> None:
         """
         Connect one object to another object.
         :param other: Other object to connect
@@ -33,16 +34,17 @@ class Neuron(Connectable):
 
     def __init__(self, name: str):
         self.name: str = name
-        self.inputs: list = []
-        self.outputs: list = []
+        self.inputs: list[Any] = []
+        self.outputs: list[Any] = []
 
     def __str__(self) -> str:
         return (
-            f"{self.name} - {len(self.inputs)} inputs," f" {len(self.outputs)}"
+            f"{self.name} - {len(self.inputs)} inputs,"
+            f" {len(self.outputs)}"
             f" outputs"
         )
 
-    def __iter__(self):
+    def __iter__(self) -> Generator[Self, Any, None]:
         yield self
 
     # def connect_to(self, other) -> None:
@@ -57,7 +59,7 @@ class Neuron(Connectable):
     #     other.inputs.append(self)
 
 
-class NeuronLayer(list, Connectable):
+class NeuronLayer(list[Any], Connectable):
     """
     Neuron layer class based on list of Neurons and Connectable.
     """

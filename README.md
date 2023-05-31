@@ -1,6 +1,7 @@
 # design-patterns
 
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
+
 <a name="readme-top"></a>
 
 <!-- PROJECT SHIELDS -->
@@ -8,7 +9,6 @@
 *** Markdown "reference style" links for readability.
 *** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
 -->
-
 
 <!-- PROJECT LOGO -->
 <br />
@@ -26,8 +26,6 @@
     <br />
   </p>
 </div>
-
-
 
 <!-- TABLE OF CONTENTS -->
 <details>
@@ -53,8 +51,6 @@
   </ol>
 </details>
 
-
-
 <!-- ABOUT THE PROJECT -->
 
 ## About the project
@@ -70,14 +66,12 @@ Software Craftsmanship by Robert C. Martin.
 
 ## Built with
 
-* [![Python][Python]][python-url]
-* [![Pylint][pylint]][pylint-url]
-* [![Pycharm][Pycharm]][Pycharm-url]
-* [![Markdown][Markdown]][Markdown-url]
+- [![Python][Python]][python-url]
+- [![Pylint][pylint]][pylint-url]
+- [![Pycharm][Pycharm]][Pycharm-url]
+- [![Markdown][Markdown]][Markdown-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 
@@ -85,51 +79,49 @@ Software Craftsmanship by Robert C. Martin.
 
 ### Prerequisites
 
-* [Python 3.10+][Python-docs]
+- [Python 3.11][Python-docs]
 
 ### Installation
 
 1. Clone the **repository**
-    ```
-    git clone https://github.com/jpcadena/design-patterns.git
-    ```
+   ```
+   git clone https://github.com/jpcadena/design-patterns.git
+   ```
 2. Change the directory to **root project**
-    ```
-    cd design-patterns
-    ```
-3. Create a **virtual environment** *venv*
-    ```
-    python3 -m venv venv
-    ```
+   ```
+   cd design-patterns
+   ```
+3. Create a **virtual environment** _venv_
+   ```
+   python -m venv venv
+   ```
 4. Activate **environment** in Windows
-    ```
-    .\venv\Scripts\activate
-    ```
+   ```
+   .\venv\Scripts\activate
+   ```
 5. Or with Unix/Mac OS X
-    ```
-    source venv/bin/activate
-    ```
+   ```
+   source venv/bin/activate
+   ```
 6. Install requirements with PIP
-    ```
-    pip install -r requirements.txt
-    ```
+   ```
+   pip install -r requirements.txt
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- USAGE EXAMPLES -->
 
 ### Usage
 
 1. If found **sample.env**, rename it to **.env**.
-2. Replace your **credentials** into the *.env* file.
+2. Replace your **credentials** into the _.env_ file.
 3. Execute with console
-    ```
-    python main.py
-    ```
+   ```
+   python main.py
+   ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- CONTRIBUTING -->
 
@@ -160,7 +152,6 @@ autocompletion: [Tabnine](https://www.tabnine.com/install)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
 <!-- LICENSE -->
 
 ## License
@@ -168,7 +159,6 @@ autocompletion: [Tabnine](https://www.tabnine.com/install)
 Distributed under the MIT License.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- CONTACT -->
 
@@ -180,37 +170,21 @@ Distributed under the MIT License.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
 [LinkedIn]: https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white
-
 [linkedin-url]: https://linkedin.com/in/juanpablocadenaaguilar
-
 [Outlook]: https://img.shields.io/badge/Microsoft_Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white
-
 [project-screenshot]: assets/images/project.png
-
 [Python]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
-
 [python-url]: https://www.python.org/
-
-[Python-docs]: https://docs.python.org/3.10/
-
+[Python-docs]: https://docs.python.org/3.11/
 [Pylint]: https://img.shields.io/badge/linting-pylint-yellowgreen
-
 [pylint-url]: https://www.pylint.org/
-
 [PyCharm]: https://img.shields.io/badge/PyCharm-21D789?style=for-the-badge&logo=pycharm&logoColor=white
-
 [Pycharm-url]: https://www.jetbrains.com/pycharm/
-
 [Markdown]: https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white
-
 [Markdown-url]: https://daringfireball.net/projects/markdown/
-
 [GitHub]: https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white
-
 [GitHub-url]: https://github.com/jpcadena/design-patterns

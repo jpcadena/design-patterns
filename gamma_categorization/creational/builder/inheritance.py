@@ -1,6 +1,7 @@
 """
 Main script
 """
+from typing import Any, Optional, Self
 
 
 class Person:
@@ -9,9 +10,9 @@ class Person:
     """
 
     def __init__(self) -> None:
-        self.name: str = None
-        self.position: str = None
-        self.date_of_birth: str = None
+        self.name: Optional[str] = None
+        self.position: Optional[str] = None
+        self.date_of_birth: Optional[str] = None
 
     def __str__(self) -> str:
         return (
@@ -20,7 +21,7 @@ class Person:
         )
 
     @staticmethod
-    def new():
+    def new() -> Any:
         """
         Static method to create instance of Person
         :return: PersonBuilder instance
@@ -51,7 +52,7 @@ class PersonInfoBuilder(PersonBuilder):
     Person Info Builder class that inherits from Person Builder
     """
 
-    def called(self, name: str):
+    def called(self, name: str) -> Self:
         """
         Assign Name of person
         :param name: Name of person
@@ -68,7 +69,7 @@ class PersonJobBuilder(PersonInfoBuilder):
     Person Job Builder class that inherits from Person Info Builder
     """
 
-    def works_as_a(self, position: str):
+    def works_as_a(self, position: str) -> Self:
         """
         Assign job position to person
         :param position: Position of person
@@ -85,7 +86,7 @@ class PersonBirthDateBuilder(PersonJobBuilder):
     Person Birthdate Builder class that inherits from Person Job Builder
     """
 
-    def born(self, date_of_birth: str):
+    def born(self, date_of_birth: str) -> Self:
         """
         Assign date of birth to person
         :param date_of_birth: Birthdate of person

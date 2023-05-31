@@ -4,10 +4,10 @@ Adapter with caching script
 from typing import Iterator
 
 from gamma_categorization.structural.adapter.adapter import (
-    draw,
-    Point,
     Line,
+    Point,
     Rectangle,
+    draw,
 )
 
 
@@ -42,7 +42,7 @@ class LineToPointAdapter(list[Point]):
         self.cache[self.hash] = points
 
     def __iter__(self) -> Iterator[Point]:
-    return iter(self.cache[self.hash])
+        return iter(self.cache[self.hash])
 
 
 if __name__ == "__main__":

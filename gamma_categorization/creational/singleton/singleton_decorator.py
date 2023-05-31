@@ -2,7 +2,7 @@
 Singleton Decorator script
 """
 from functools import wraps
-from typing import Any, Type
+from typing import Any, Self, Type
 
 
 def singleton(cls: Type[Any]) -> Type[Any]:
@@ -40,7 +40,7 @@ class Database:
     Database class
     """
 
-    def __new__(cls):
+    def __new__(cls) -> Self:
         print("Loading database")
         return super(Database, cls).__new__(cls)
 

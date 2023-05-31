@@ -2,6 +2,7 @@
 Interface Segregation Principle
 """
 from abc import abstractmethod
+from typing import Any
 
 
 class Machine:
@@ -9,31 +10,31 @@ class Machine:
     Machine class
     """
 
-    def print(self, document):
+    def print(self, document: Any) -> None:
         """
         Print method
-        :param document:
-        :type document:
+        :param document: The document to print
+        :type document: Any
         :return: None
         :rtype: NoneType
         """
         raise NotImplementedError()
 
-    def fax(self, document):
+    def fax(self, document: Any) -> None:
         """
         Fax method
-        :param document:
-        :type document:
+        :param document: The document to fax
+        :type document: Any
         :return: None
         :rtype: NoneType
         """
         raise NotImplementedError()
 
-    def scan(self, document):
+    def scan(self, document: Any) -> None:
         """
         Scan method
-        :param document:
-        :type document:
+        :param document: The document to scan
+        :type document: Any
         :return: None
         :rtype: NoneType
         """
@@ -45,13 +46,13 @@ class MultiFunctionPrinter(Machine):
     Multi Function Printer class
     """
 
-    def print(self, document) -> None:
+    def print(self, document: Any) -> None:
         pass
 
-    def fax(self, document) -> None:
+    def fax(self, document: Any) -> None:
         pass
 
-    def scan(self, document) -> None:
+    def scan(self, document: Any) -> None:
         pass
 
 
@@ -60,14 +61,14 @@ class OldFashionedPrinter(Machine):
     Old Fashioned Printer class based on Machine
     """
 
-    def print(self, document) -> None:
+    def print(self, document: Any) -> None:
         # ok - print stuff
         pass
 
-    def fax(self, document) -> None:
+    def fax(self, document: Any) -> None:
         pass  # do-nothing
 
-    def scan(self, document):
+    def scan(self, document: Any) -> None:
         """Not supported!"""
         raise NotImplementedError("Printer cannot scan!")
 
@@ -78,11 +79,11 @@ class Printer:
     """
 
     @abstractmethod
-    def print(self, document) -> None:
+    def print(self, document: Any) -> None:
         """
         Print abstract method
-        :param document: document
-        :type document:
+        :param document: The document to print
+        :type document: Any
         :return: None
         :rtype: NoneType
         """
@@ -94,12 +95,12 @@ class Scanner:
     """
 
     @abstractmethod
-    def scan(self, document) -> None:
+    def scan(self, document: Any) -> None:
         """
         Scan abstract method
-        :param document: document
-        :type document:
-        :return:None
+        :param document: The document to scan
+        :type document: Any
+        :return: None
         :rtype: NoneType
         """
 
@@ -109,7 +110,7 @@ class MyPrinter(Printer):
     My Printer class based on Printer
     """
 
-    def print(self, document) -> None:
+    def print(self, document: Any) -> None:
         print(document)
 
 
@@ -118,10 +119,10 @@ class Photocopier(Printer, Scanner):
     Photocopier class that inherits from Printer and Scanner
     """
 
-    def print(self, document) -> None:
+    def print(self, document: Any) -> None:
         print(document)
 
-    def scan(self, document) -> None:
+    def scan(self, document: Any) -> None:
         pass  # something meaningful
 
 
@@ -131,11 +132,11 @@ class MultiFunctionDevice(Printer, Scanner):
     """
 
     @abstractmethod
-    def print(self, document) -> None:
+    def print(self, document: Any) -> None:
         pass
 
     @abstractmethod
-    def scan(self, document) -> None:
+    def scan(self, document: Any) -> None:
         pass
 
 
@@ -148,10 +149,10 @@ class MultiFunctionMachine(MultiFunctionDevice):
         self.printer: Printer = printer
         self.scanner: Scanner = scanner
 
-    def print(self, document) -> None:
+    def print(self, document: Any) -> None:
         self.printer.print(document)
 
-    def scan(self, document) -> None:
+    def scan(self, document: Any) -> None:
         self.scanner.scan(document)
 
 

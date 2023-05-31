@@ -13,7 +13,7 @@ class Journal:
         """
         Initialize Journal
         """
-        self.entries: list = []
+        self.entries: list[str] = []
         self.count: int = 0
 
     def add_entry(self, text: str) -> None:

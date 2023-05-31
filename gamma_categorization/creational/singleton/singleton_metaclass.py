@@ -9,7 +9,7 @@ class Singleton(type):
     Metaclass that creates a Singleton base type when called.
     """
 
-    _instances: dict = {}
+    _instances: dict[Any, Any] = {}
 
     def __call__(cls, *args: tuple[Any, ...], **kwargs: dict[str, Any]) -> Any:
         if cls not in cls._instances:

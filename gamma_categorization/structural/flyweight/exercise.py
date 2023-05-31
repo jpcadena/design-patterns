@@ -1,7 +1,7 @@
 """
 Flyweight Coding Exercise
 """
-from typing import Optional
+from typing import Any, Optional
 
 
 class Sentence:
@@ -11,7 +11,7 @@ class Sentence:
 
     def __init__(self, plain_text: str):
         self.words: list[str] = plain_text.split(" ")
-        self.tokens: list = [None] * len(self.words)
+        self.tokens: list[Any] = [None] * len(self.words)
 
     class WordToken:
         """

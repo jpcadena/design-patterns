@@ -93,7 +93,7 @@ class HotDrinkMachine:
     }
 
     def __init__(self) -> None:
-        self.factory_instances: dict = {
+        self.factory_instances: dict[Enum, HotDrinkFactory] = {
             drink: drink_factory()
             for drink, drink_factory in self.factories.items()
         }

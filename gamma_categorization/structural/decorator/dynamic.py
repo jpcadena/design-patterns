@@ -1,7 +1,7 @@
 """
 Dynamic Decorator script
 """
-from typing import TextIO, Iterator, Any
+from typing import Any, Iterator, TextIO
 
 
 class FileWithLogging:

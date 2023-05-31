@@ -25,7 +25,7 @@ class Splitter:
     Splitter class
     """
 
-    def split(self, array: list[list[int]]) -> list[list]:
+    def split(self, array: list[list[int]]) -> list[list[int]]:
         """
         Splits an array into a list of integers
         :param array: The array to split1
@@ -33,7 +33,7 @@ class Splitter:
         :return: The list of integers
         :rtype: list[list]
         """
-        result: list[list] = []
+        result: list[list[int]] = []
         row_count: int = len(array)
         col_count: int = len(array[0])
         for row in range(row_count):
@@ -98,9 +98,10 @@ class MagicSquareGenerator:
         splitter: Splitter = Splitter()
         verifier: Verifier = Verifier()
         while True:
-            square: list[list[int]] = [generator.generate(size) for _ in
-                                       range(size)]
-            split_square: list[list] = splitter.split(square)
+            square: list[list[int]] = [
+                generator.generate(size) for _ in range(size)
+            ]
+            split_square: list[list[int]] = splitter.split(square)
             if verifier.verify(split_square):
                 return square
 

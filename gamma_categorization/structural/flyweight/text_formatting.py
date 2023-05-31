@@ -1,6 +1,7 @@
 """
 Flyweight script using a Text Formatting
 """
+from typing import Any
 
 
 class FormattedText:
@@ -40,7 +41,7 @@ class BetterFormattedText:
 
     def __init__(self, plain_text: str):
         self.plain_text: str = plain_text
-        self.formatting: list = []
+        self.formatting: list[Any] = []
 
     class TextRange:
         """

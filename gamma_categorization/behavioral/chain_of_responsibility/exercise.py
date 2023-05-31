@@ -1,6 +1,7 @@
 """
 Chain of Responsibility Coding Exercise
 """
+from typing import Any
 
 
 class Creature:
@@ -8,7 +9,7 @@ class Creature:
     Creature class
     """
 
-    def __init__(self, game) -> None:
+    def __init__(self, game: Any) -> None:
         self.game: Game = game
 
 
@@ -17,7 +18,7 @@ class Goblin(Creature):
     Goblin class that inherits from Creature
     """
 
-    def __init__(self, game) -> None:
+    def __init__(self, game: Any) -> None:
         super().__init__(game)
         game.creatures.append(self)
 
@@ -44,8 +45,8 @@ class Goblin(Creature):
         defense: int = 1
         num_goblins: int = (
                 sum(
-                    isinstance(creature, Goblin)
-                    for creature in self.game.creatures
+                    isinstance(creature, Goblin) for creature
+                    in self.game.creatures
                 )
                 - 1
         )

@@ -2,6 +2,7 @@
 Factory method script
 """
 from math import cos, sin
+from typing import Any
 
 
 class Point:
@@ -17,7 +18,7 @@ class Point:
         return f"x: {self.x_coordinate}, y: {self.y_coordinate}"
 
     @staticmethod
-    def new_cartesian_point(x_coordinate: float, y_coordinate: float):
+    def new_cartesian_point(x_coordinate: float, y_coordinate: float) -> Any:
         """
         Factory initializer method for Cartesian Point
         :param x_coordinate: X-coordinate of the point
@@ -30,7 +31,7 @@ class Point:
         return Point(x_coordinate, y_coordinate)
 
     @staticmethod
-    def new_polar_point(rho: float, theta: float):
+    def new_polar_point(rho: float, theta: float) -> Any:
         """
         Factory initializer method for Polar Point
         :param rho: Distance of the vector

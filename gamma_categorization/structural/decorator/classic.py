@@ -82,8 +82,9 @@ if __name__ == "__main__":
     red_circle: ColoredShape = ColoredShape(circle, "red")
     print(red_circle)
 
-    red_half_transparent_circle: TransparentShape = TransparentShape(red_circle,
-                                                                     0.5)
+    red_half_transparent_circle: TransparentShape = TransparentShape(
+        red_circle, 0.5
+    )
     print(red_half_transparent_circle)
     mixed: ColoredShape = ColoredShape(ColoredShape(Square(3), "red"), "green")
     print(mixed)

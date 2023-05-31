@@ -2,6 +2,7 @@
 Singleton Allocator script
 """
 import random
+from typing import Any, Self
 
 
 class Database:
@@ -18,7 +19,7 @@ class Database:
 
     _instance = None
 
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls, *args: tuple[Any, ...], **kwargs: dict[str, Any]) -> Self:
         if not cls._instance:
             cls._instance = super(Database, cls).__new__(cls, *args, **kwargs)
         return cls._instance

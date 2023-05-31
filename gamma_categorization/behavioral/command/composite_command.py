@@ -3,6 +3,7 @@ Composite Command a.k.a. Macro script
 """
 from abc import ABC
 from enum import Enum
+from typing import Any
 
 from gamma_categorization.behavioral.command.command import BankAccount
 
@@ -41,7 +42,7 @@ class BankAccountCommand(Command):
         self.action: Enum = action
         self.account: BankAccount = account
 
-    class Action(Enum):
+    class Action(int, Enum):
         """
         Action class that inherits from Python built-in Enum.
         """
@@ -71,13 +72,13 @@ class BankAccountCommand(Command):
 # try using this before using MoneyTransferCommand!
 
 
-class CompositeBankAccountCommand(Command, list):
+class CompositeBankAccountCommand(Command, list[Any]):
     """
     Composite Bank Account Command class that inherits from Command and
      Python built-in list.
     """
 
-    def __init__(self, items: list):
+    def __init__(self, items: list[Any]):
         super().__init__()
         for i in items:
             self.append(i)

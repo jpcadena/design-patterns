@@ -2,19 +2,20 @@
 Open-Closed Principle
 """
 from enum import Enum
+from typing import Any, Generator
 
 
-class Color(Enum):
+class Color(int, Enum):
     """
     Color class based on Enum
     """
 
     RED: int = 1
-    GREEN = 2
-    BLUE = 3
+    GREEN: int = 2
+    BLUE: int = 3
 
 
-class Size(Enum):
+class Size(int, Enum):
     """
     Size class based on Enum
     """
@@ -44,8 +45,8 @@ class ProductFilter:
     """
 
     def filter_by_color(
-            self, products: list[Product], color: Color
-    ) -> Product:
+        self, products: list[Product], color: Color
+    ) -> Generator[Product, Any, None]:
         """
         Filter by color method
         :param products: list of products
@@ -53,13 +54,15 @@ class ProductFilter:
         :param color: color enum
         :type color: Color
         :return: Product instance
-        :rtype: Product
+        :rtype: Generator[Product, Any, None]
         """
         for product in products:
             if product.color == color:
                 yield product
 
-    def filter_by_size(self, products: list[Product], size: Size) -> Product:
+    def filter_by_size(
+        self, products: list[Product], size: Size
+    ) -> Generator[Product, Any, None]:
         """
         Filter by size method
         :param products: list of products
@@ -67,15 +70,15 @@ class ProductFilter:
         :param size: size enum
         :type size: Size
         :return: Product instance
-        :rtype: Product
+        :rtype: Generator[Product, Any, None]
         """
         for product in products:
             if product.size == size:
                 yield product
 
     def filter_by_size_and_color(
-            self, products: list[Product], size: Size, color: Color
-    ) -> Product:
+        self, products: list[Product], size: Size, color: Color
+    ) -> Generator[Product, Any, None]:
         """
         Filter by size and color method
         :param products: list of products
@@ -85,7 +88,7 @@ class ProductFilter:
         :param color: color enum
         :type color: Color
         :return: Product instance
-        :rtype: Product
+        :rtype: Generator[Product, Any, None]
         """
         for product in products:
             if product.color == color and product.size == size:
@@ -103,17 +106,17 @@ class Specification:
     Specification class
     """
 
-    def is_satisfied(self, item: Product) -> None:
+    def is_satisfied(self, item: Product) -> Any:
         """
         Is satisfied the product
         :param item: product
         :type item: Product
-        :return: None
-        :rtype: NoneType
+        :return: Some value
+        :rtype: Any
         """
 
     # and operator makes life easier
-    def __and__(self, other: Product):
+    def __and__(self, other: Product) -> Any:
         return AndSpecification(self, other)
 
 
@@ -122,15 +125,17 @@ class Filter:
     Filter class
     """
 
-    def filter(self, items: list[Product], spec: Specification) -> None:
+    def filter(
+        self, items: list[Product], spec: Specification
+    ) -> Any:
         """
         Filter method
         :param items: list of products
         :type items: list[Product]
         :param spec: specification to filter by
         :type spec: Specification
-        :return: None
-        :rtype: NoneType
+        :return: Some value
+        :rtype: Any
         """
 
 
@@ -173,8 +178,8 @@ class AndSpecification(Specification):
     And Specification class based on Specification
     """
 
-    def __init__(self, *args) -> None:
-        self.args: tuple = args
+    def __init__(self, *args: tuple[Any, ...]) -> None:
+        self.args: tuple[Any, ...] = args
 
     def is_satisfied(self, item: Product) -> bool:
         return all(map(lambda spec: spec.is_satisfied(item), self.args))
@@ -185,7 +190,9 @@ class BetterFilter(Filter):
     Better Filter class based on Filter
     """
 
-    def filter(self, items: list[Product], spec: Specification):
+    def filter(
+        self, items: list[Product], spec: Specification
+    ) -> Generator[Product, Any, None]:
         for item in items:
             if spec.is_satisfied(item):
                 yield item

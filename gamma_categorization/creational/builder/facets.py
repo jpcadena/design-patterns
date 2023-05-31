@@ -1,6 +1,7 @@
 """
 Main script
 """
+from typing import Any, Optional, Self
 
 
 class Person:
@@ -9,12 +10,12 @@ class Person:
     """
 
     def __init__(self) -> None:
-        self.street_address: str = None
-        self.post_code: str = None
-        self.city: str = None
-        self.company_name: str = None
-        self.position: str = None
-        self.annual_income: int = None
+        self.street_address: Optional[str] = None
+        self.post_code: Optional[str] = None
+        self.city: Optional[str] = None
+        self.company_name: Optional[str] = None
+        self.position: Optional[str] = None
+        self.annual_income: Optional[int] = None
 
     def __str__(self) -> str:
         return (
@@ -34,7 +35,7 @@ class PersonBuilder:  # facade
         self.person: Person = person
 
     @property
-    def lives(self):
+    def lives(self) -> Any:
         """
         Property for living information of person
         :return: PersonAddressBuilder instance
@@ -43,7 +44,7 @@ class PersonBuilder:  # facade
         return PersonAddressBuilder(self.person)
 
     @property
-    def works(self):
+    def works(self) -> Any:
         """
         Property for working information of person
         :return: PersonJobBuilder instance
@@ -68,7 +69,7 @@ class PersonAddressBuilder(PersonBuilder):
     def __init__(self, person: Person):
         super().__init__(person)
 
-    def at(self, street_address: str):
+    def at(self, street_address: str) -> Self:
         """
         Assign Street Address for person
         :param street_address: Street Address for person
@@ -79,7 +80,7 @@ class PersonAddressBuilder(PersonBuilder):
         self.person.street_address = street_address
         return self
 
-    def with_post_code(self, post_code: str):
+    def with_post_code(self, post_code: str) -> Self:
         """
         Assign Post Code for person
         :param post_code: Post code for person
@@ -90,7 +91,7 @@ class PersonAddressBuilder(PersonBuilder):
         self.person.post_code = post_code
         return self
 
-    def in_city(self, city: str):
+    def in_city(self, city: str) -> Self:
         """
         Assign city for person
         :param city: City for person
@@ -110,7 +111,7 @@ class PersonJobBuilder(PersonBuilder):
     def __init__(self, person: Person):
         super().__init__(person)
 
-    def at(self, company_name: str):
+    def at(self, company_name: str) -> Self:
         """
         Assign Company name for person
         :param company_name: Company name for person
@@ -121,7 +122,7 @@ class PersonJobBuilder(PersonBuilder):
         self.person.company_name = company_name
         return self
 
-    def as_a(self, position: str):
+    def as_a(self, position: str) -> Self:
         """
         Assign Position for person at company
         :param position: Position for person
@@ -132,7 +133,7 @@ class PersonJobBuilder(PersonBuilder):
         self.person.position = position
         return self
 
-    def earning(self, annual_income: int):
+    def earning(self, annual_income: int) -> Self:
         """
         Assign Annual income for person
         :param annual_income: Annual income for person

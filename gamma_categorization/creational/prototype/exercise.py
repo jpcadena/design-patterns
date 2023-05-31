@@ -5,6 +5,7 @@ Implement Line.deep_copy() to perform a deep copy of the given Line
 This method should return a copy of a Line that contains copies of its
  start/end points.
 """
+from typing import Any
 
 
 class Point:
@@ -26,7 +27,7 @@ class Line:
         self.start: Point = start
         self.end: Point = end
 
-    def deep_copy(self):
+    def deep_copy(self) -> Any:
         """
         Perform deep copy of the given Line object
         :return: Line instance

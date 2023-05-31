@@ -1,7 +1,7 @@
 """
 Builder script
 """
-
+from typing import Any
 
 # text: str = 'hello'
 # parts: list[str] = ['<p>', text, '</p>']
@@ -25,7 +25,7 @@ class HtmlElement:
     def __init__(self, name: str = "", text: str = ""):
         self.name: str = name
         self.text: str = text
-        self.elements: list = []
+        self.elements: list[Any] = []
 
     def __str__(self, indent: int = 0) -> str:
         lines: list[str] = []

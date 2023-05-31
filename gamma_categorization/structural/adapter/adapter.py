@@ -40,8 +40,9 @@ class Rectangle(list[Line]):
     Rectangle class
     """
 
-    def __init__(self, x_coordinate: int, y_coordinate: int, width: int,
-                 height: int):
+    def __init__(
+            self, x_coordinate: int, y_coordinate: int, width: int, height: int
+    ):
         super().__init__()
         self.append(
             Line(
@@ -113,6 +114,8 @@ def draw(rectangles: list[Rectangle]) -> None:
 
 
 if __name__ == "__main__":
-    rectangles_list: list[Rectangle] = [Rectangle(1, 1, 10, 10),
-                                        Rectangle(3, 3, 6, 6)]
+    rectangles_list: list[Rectangle] = [
+        Rectangle(1, 1, 10, 10),
+        Rectangle(3, 3, 6, 6),
+    ]
     draw(rectangles_list)

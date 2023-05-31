@@ -1,7 +1,7 @@
 """
 Virtual Proxy script
 """
-from typing import Union, Optional
+from typing import Optional, Union
 
 
 class Bitmap:

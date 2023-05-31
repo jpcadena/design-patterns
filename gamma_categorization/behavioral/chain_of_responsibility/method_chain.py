@@ -1,6 +1,7 @@
 """
 Method chain script
 """
+from typing import Self
 
 
 class Creature:
@@ -26,7 +27,7 @@ class CreatureModifier:
         self.creature: Creature = creature
         self.next_modifier = None
 
-    def add_modifier(self, modifier) -> None:
+    def add_modifier(self, modifier: Self) -> None:
         """
         Add a modifier
         :param modifier: The modifier to add

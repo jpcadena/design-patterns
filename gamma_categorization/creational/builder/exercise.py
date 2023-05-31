@@ -3,7 +3,7 @@ Builder Coding Exercise
 You are asked to implement the Builder design pattern for rendering
  simple chunks of code.
 """
-
+from typing import Self
 
 # Sample use of the builder you are asked to create:
 #
@@ -25,12 +25,12 @@ class CodeBuilder:
 
     INDENT_STEP = 2
 
-    def __init__(self, root_name) -> None:
-        self.root_name = root_name
+    def __init__(self, root_name: str) -> None:
+        self.root_name: str = root_name
         self.indent: int = 0
         self.fields: list[tuple[str, str]] = []
 
-    def add_field(self, field_type: str, name: str):
+    def add_field(self, field_type: str, name: str) -> Self:
         """
         Method to add a field as class attributes
         :param field_type: Name of the attribute

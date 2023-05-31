@@ -8,10 +8,10 @@ CQS
 from abc import ABC
 from enum import Enum
 from types import TracebackType
-from typing import Optional, Type, Any
+from typing import Any, Optional, Self, Type
 
 
-class WhatToQuery(Enum):
+class WhatToQuery(int, Enum):
     """
     What to query class based on Python built-in Enum
     """
@@ -26,17 +26,17 @@ class Query:
     """
 
     def __init__(
-    self,
-    creature_name: str,
-    what_to_query: WhatToQuery,
-    default_value: int,
-):
-    self.creature_name: str = creature_name
-    self.what_to_query: WhatToQuery = what_to_query
-    self.value: int = default_value
+            self,
+            creature_name: str,
+            what_to_query: WhatToQuery,
+            default_value: int,
+    ):
+        self.creature_name: str = creature_name
+        self.what_to_query: WhatToQuery = what_to_query
+        self.value: int = default_value
 
 
-class Event(list):
+class Event(list[Any]):
     """
     Event class based on Python built-in list.
     """
@@ -54,9 +54,9 @@ class Game:
     """
 
     def __init__(self) -> None:
-    self.queries: Event = Event()
+        self.queries: Event = Event()
 
-    def perform_query(self, sender, query: Query) -> None:
+    def perform_query(self, sender: Any, query: Any) -> None:
         """
         Performs a query
         :param sender: The sender of the query
@@ -87,7 +87,10 @@ class Creature:
         :return: The attack
         :rtype: int
         """
-        query: Query = Query(self.name, WhatToQuery.ATTACK, self.initial_attack)self.game.perform_query(self, query)
+        query: Query = Query(
+            self.name, WhatToQuery.ATTACK, self.initial_attack
+        )
+        self.game.perform_query(self, query)
         return query.value
 
     @property
@@ -97,11 +100,14 @@ class Creature:
         :return: The defense
         :rtype: int
         """
-        query: Query = Query(self.name, WhatToQuery.DEFENSE, self.initial_defense)self.game.perform_query(self, query)
+        query: Query = Query(
+            self.name, WhatToQuery.DEFENSE, self.initial_defense
+        )
+        self.game.perform_query(self, query)
         return query.value
 
     def __str__(self) -> str:
-    return f"{self.name}: ({self.attack}/{self.defense})"
+        return f"{self.name}: ({self.attack}/{self.defense})"
 
 
 class CreatureModifier(ABC):
@@ -114,7 +120,7 @@ class CreatureModifier(ABC):
         self.game: Game = game
         self.game.queries.append(self.handle)
 
-    def handle(self, sender, query) -> None:
+    def handle(self, sender: Creature, query: Query) -> None:
         """
         Handle the query
         :param sender: The sender of the query
@@ -125,7 +131,7 @@ class CreatureModifier(ABC):
         :rtype: NoneType
         """
 
-    def __enter__(self):
+    def __enter__(self) -> Self:
         return self
 
     def __exit__(

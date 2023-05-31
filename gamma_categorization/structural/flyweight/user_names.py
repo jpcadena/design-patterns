@@ -35,8 +35,9 @@ class ImprovedUser:
             self.strings.append(name)
             return len(self.strings) - 1
 
-        self.names: list[int] = [get_or_add(name) for name in
-                                 full_name.split(" ")]
+        self.names: list[int] = [
+            get_or_add(name) for name in full_name.split(" ")
+        ]
 
     def __str__(self) -> str:
         return " ".join(self.strings[name] for name in self.names)

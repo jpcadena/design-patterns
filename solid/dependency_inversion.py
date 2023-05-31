@@ -3,17 +3,17 @@ Dependency Inversion Principle
 """
 from abc import abstractmethod
 from enum import Enum
-from typing import Generator
+from typing import Any, Generator
 
 
-class Relationship(Enum):
+class Relationship(int, Enum):
     """
     Relationship class based on Enum
     """
 
-    PARENT = 0
-    CHILD = 1
-    SIBLING = 2
+    PARENT: int = 0
+    CHILD: int = 1
+    SIBLING: int = 2
 
 
 class Person:
@@ -31,7 +31,7 @@ class RelationshipBrowser:
     """
 
     @abstractmethod
-    def find_all_children_of(self, name: str) -> None:
+    def find_all_children_of(self, name: str) -> Any:
         """
         Find all children of parent name
         :param name: parent
@@ -64,8 +64,8 @@ class Relationships(RelationshipBrowser):
     def find_all_children_of(self, name: str) -> Generator[str, None, None]:
         for relationship in self.relations:
             if (
-                    relationship[0].name == name
-                    and relationship[1] == Relationship.PARENT
+                relationship[0].name == name
+                and relationship[1] == Relationship.PARENT
             ):
                 yield relationship[2].name
 
