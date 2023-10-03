@@ -1,7 +1,7 @@
 """
 Flyweight script for Usernames
 """
-import random
+import secrets
 import string
 
 
@@ -49,7 +49,7 @@ def random_string() -> str:
     :return: The random string
     :rtype: str
     """
-    return "".join([random.choice(string.ascii_lowercase) for _ in range(8)])
+    return "".join([secrets.choice(string.ascii_lowercase) for _ in range(8)])
 
 
 if __name__ == "__main__":

@@ -1,7 +1,7 @@
 """
 Singleton Allocator script
 """
-import random
+import secrets
 from typing import Any, Self
 
 
@@ -13,7 +13,7 @@ class Database:
     initialized: bool = False
 
     def __init__(self) -> None:
-        self.db_id: int = random.randint(1, 101)
+        self.db_id: int = secrets.randbelow(101) + 1
         print("Generated an id of", self.db_id)
         print("Loading database from file")
 

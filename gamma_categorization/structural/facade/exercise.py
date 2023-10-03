@@ -1,7 +1,7 @@
 """
 Façade Coding Exercise
 """
-from random import randint
+import secrets
 
 
 class Generator:
@@ -9,7 +9,8 @@ class Generator:
     Generator class
     """
 
-    def generate(self, count: int) -> list[int]:
+    @staticmethod
+    def generate(count: int) -> list[int]:
         """
         Generates a list of random numbers
         :param count: The count of random numbers to generate
@@ -17,7 +18,7 @@ class Generator:
         :return: The list of random numbers
         :rtype: list[int]
         """
-        return [randint(1, 9) for x in range(count)]
+        return [secrets.choice(range(1, 10)) for _ in range(count)]
 
 
 class Splitter:
@@ -25,7 +26,8 @@ class Splitter:
     Splitter class
     """
 
-    def split(self, array: list[list[int]]) -> list[list[int]]:
+    @staticmethod
+    def split(array: list[list[int]]) -> list[list[int]]:
         """
         Splits an array into a list of integers
         :param array: The array to split1
@@ -65,7 +67,8 @@ class Verifier:
     Verifier class
     """
 
-    def verify(self, arrays: list[list[int]]) -> bool:
+    @staticmethod
+    def verify(arrays: list[list[int]]) -> bool:
         """
         Verifies the given arrays
         :param arrays: The list of arrays to verify
@@ -86,7 +89,8 @@ class MagicSquareGenerator:
     Magic Square Generator class
     """
 
-    def generate(self, size: int) -> list[list[int]]:
+    @staticmethod
+    def generate(size: int) -> list[list[int]]:
         """
         Generates the magic square
         :param size: The size of the square
