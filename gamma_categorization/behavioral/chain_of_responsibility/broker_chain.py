@@ -25,10 +25,10 @@ class Query:
     """
 
     def __init__(
-            self,
-            creature_name: str,
-            what_to_query: WhatToQuery,
-            default_value: int,
+        self,
+        creature_name: str,
+        what_to_query: WhatToQuery,
+        default_value: int,
     ):
         self.creature_name: str = creature_name
         self.what_to_query: WhatToQuery = what_to_query
@@ -41,7 +41,7 @@ class Event(list[Any]):
     """
 
     def __call__(
-            self, *args: tuple[Any, ...], **kwargs: dict[str, Any]
+        self, *args: tuple[Any, ...], **kwargs: dict[str, Any]
     ) -> None:
         for item in self:
             item(*args, **kwargs)
@@ -132,10 +132,10 @@ class CreatureModifier(ABC):
         return self
 
     def __exit__(
-            self,
-            exc_type: Optional[Type[BaseException]],
-            exc_value: Optional[BaseException],
-            exc_tb: Optional[TracebackType],
+        self,
+        exc_type: Optional[Type[BaseException]],
+        exc_value: Optional[BaseException],
+        exc_tb: Optional[TracebackType],
     ) -> None:
         self.game.queries.remove(self.handle)
 
@@ -147,8 +147,8 @@ class DoubleAttackModifier(CreatureModifier):
 
     def handle(self, sender: Creature, query: Query) -> None:
         if (
-                sender.name == self.creature.name
-                and query.what_to_query == WhatToQuery.ATTACK
+            sender.name == self.creature.name
+            and query.what_to_query == WhatToQuery.ATTACK
         ):
             query.value *= 2
 

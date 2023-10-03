@@ -42,7 +42,7 @@ class Rectangle(list[Line]):
     """
 
     def __init__(
-            self, x_coordinate: int, y_coordinate: int, width: int, height: int
+        self, x_coordinate: int, y_coordinate: int, width: int, height: int
     ):
         super().__init__()
         self.append(

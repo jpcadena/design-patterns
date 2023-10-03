@@ -23,7 +23,7 @@ class Point:
         """
 
         def new_cartesian_point(
-                self, x_coordinate: float, y_coordinate: float
+            self, x_coordinate: float, y_coordinate: float
         ) -> Any:
             """
             Factory initializer method for Cartesian Point

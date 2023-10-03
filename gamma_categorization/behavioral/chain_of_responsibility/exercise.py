@@ -44,11 +44,10 @@ class Goblin(Creature):
         """
         defense: int = 1
         num_goblins: int = (
-                sum(
-                    isinstance(creature, Goblin) for creature in
-                    self.game.creatures
-                )
-                - 1
+            sum(
+                isinstance(creature, Goblin) for creature in self.game.creatures
+            )
+            - 1
         )
         defense += num_goblins
         return defense

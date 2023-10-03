@@ -46,6 +46,8 @@
     </li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
+    <li><a href="#security">Security</a></li>
+    <li><a href="#code-of-conduct">Code of Conduct</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
   </ol>
@@ -120,26 +122,23 @@ Software Craftsmanship by Robert C. Martin.
 
 [![GitHub][github-shield]][github-url]
 
-If you have a suggestion that would make this better, please fork the repo and
-create a pull request.
+Please read our [contributing guide](CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-Use docstrings with **reStructuredText** format by adding triple double quotes
-**"""** after function definition.\
-Add a brief function description, also for the parameters including the return
-value and its corresponding data type.\
-Please use **linting** to check your code quality
-following [PEP 8](https://peps.python.org/pep-0008/).\
-Check documentation
-for [Visual Studio Code](https://code.visualstudio.com/docs/python/linting#_run-linting)
-or [Jetbrains Pycharm](https://github.com/leinardi/pylint-pycharm/blob/master/README.md).\
-Recommended plugin for
-autocompletion: [Tabnine](https://www.tabnine.com/install)
+<!-- SECURITY -->
+
+## Security
+
+For security considerations and best practices, please refer to our [Security Guide](SECURITY.md) for a detailed guide.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- CODE_OF_CONDUCT -->
+
+## Code of Conduct
+
+We enforce a code of conduct for all maintainers and contributors. Please read our [Code of Conduct](CODE_OF_CONDUCT.md) to understand the expectations before making any contributions.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

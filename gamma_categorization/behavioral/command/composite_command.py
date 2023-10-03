@@ -99,7 +99,7 @@ class MoneyTransferCommand(CompositeBankAccountCommand):
     """
 
     def __init__(
-            self, from_acct: BankAccount, to_acct: BankAccount, amount: int
+        self, from_acct: BankAccount, to_acct: BankAccount, amount: int
     ):
         super().__init__(
             [
