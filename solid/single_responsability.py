@@ -40,12 +40,12 @@ class Journal:
     def __str__(self) -> str:
         return "\n".join(self.entries)
 
-    # Anti-pattern: God object where all functionality including:
+    # "Anti-pattern": God object where all functionality including:
     # crud, persistence, etc. goes into same class.
 
     # def save(self, filename: str):
     #     """
-    #     Save the object class itself to a file.
+    #     Save the object class itself to a file
     #     :param filename: Name of the file
     #     :type filename: str
     #     :return: None

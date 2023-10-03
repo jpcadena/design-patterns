@@ -2,7 +2,7 @@
 Open-Closed Principle
 """
 from enum import Enum
-from typing import Any, Generator
+from typing import Any, Generator, Self
 
 
 class Color(int, Enum):
@@ -116,7 +116,7 @@ class Specification:
         """
 
     # and operator makes life easier
-    def __and__(self, other: Product) -> Any:
+    def __and__(self, other: Self) -> "AndSpecification":
         return AndSpecification(self, other)
 
 
@@ -125,9 +125,7 @@ class Filter:
     Filter class
     """
 
-    def filter(
-        self, items: list[Product], spec: Specification
-    ) -> Any:
+    def filter(self, items: list[Product], spec: Specification) -> Any:
         """
         Filter method
         :param items: list of products
@@ -178,8 +176,8 @@ class AndSpecification(Specification):
     And Specification class based on Specification
     """
 
-    def __init__(self, *args: tuple[Any, ...]) -> None:
-        self.args: tuple[Any, ...] = args
+    def __init__(self, *args: Specification) -> None:
+        self.args: tuple[Specification, ...] = args
 
     def is_satisfied(self, item: Product) -> bool:
         return all(map(lambda spec: spec.is_satisfied(item), self.args))
@@ -212,7 +210,7 @@ for p in pf.filter_by_color(my_products, Color.GREEN):
 # ^ BEFORE
 
 # v AFTER
-bf = BetterFilter()
+bf: BetterFilter = BetterFilter()
 
 print("Green products (new):")
 green: ColorSpecification = ColorSpecification(Color.GREEN)
@@ -226,6 +224,8 @@ for p in bf.filter(my_products, large):
 
 print("Large blue items:")
 # large_blue = AndSpecification(large, ColorSpecification(Color.BLUE))
-large_blue: AndSpecification = large & ColorSpecification(Color.BLUE)
+large_blue: AndSpecification = AndSpecification(
+    large, ColorSpecification(Color.BLUE)
+)
 for p in bf.filter(my_products, large_blue):
     print(f" - {p.name} is large and blue")

@@ -45,8 +45,8 @@ class Goblin(Creature):
         defense: int = 1
         num_goblins: int = (
                 sum(
-                    isinstance(creature, Goblin) for creature
-                    in self.game.creatures
+                    isinstance(creature, Goblin) for creature in
+                    self.game.creatures
                 )
                 - 1
         )

@@ -1,6 +1,5 @@
 """
 Broker chain script.
-
 Build an event broker (construct of observer)
 Event: list of functions to be called
 CQS
@@ -87,9 +86,7 @@ class Creature:
         :return: The attack
         :rtype: int
         """
-        query: Query = Query(
-            self.name, WhatToQuery.ATTACK, self.initial_attack
-        )
+        query: Query = Query(self.name, WhatToQuery.ATTACK, self.initial_attack)
         self.game.perform_query(self, query)
         return query.value
 

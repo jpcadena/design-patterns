@@ -16,7 +16,8 @@ class Point:
         self.x_coordinate: int = x_coordinate
         self.y_coordinate: int = y_coordinate
 
-    def draw_point(self) -> None:
+    @staticmethod
+    def draw_point() -> None:
         """
         Draws a point
         :return: None
@@ -75,13 +76,13 @@ class LineToPointAdapter(list[Point]):
     Adapter for Line to Point class
     """
 
-    count: int = 0
+    instance_count: int = 0
 
     def __init__(self, line: Line):
         super().__init__()
-        self.count += 1
+        self.instance_count += 1
         print(
-            f"{self.count}: Generating points for line ["
+            f"{self.instance_count}: Generating points for line ["
             f"{line.start.x_coordinate},{line.start.y_coordinate}] -> ["
             f"{line.end.x_coordinate},{line.end.y_coordinate}]"
         )

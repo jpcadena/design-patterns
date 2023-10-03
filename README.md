@@ -58,7 +58,7 @@
 [![Project][project-screenshot]](https://example.com)
 
 This project is about Design Patterns in Python that includes the S.O.L.I.D.
-principles and the Gamma Categorization for 23 design pattern classified into
+principles and the Gamma Categorization for 23 design patterns classified into
 Creational, Behavioral and Structural based on Clean Code: A Handbook of Agile
 Software Craftsmanship by Robert C. Martin.
 
@@ -66,10 +66,7 @@ Software Craftsmanship by Robert C. Martin.
 
 ## Built with
 
-- [![Python][Python]][python-url]
-- [![Pylint][pylint]][pylint-url]
-- [![Pycharm][Pycharm]][Pycharm-url]
-- [![Markdown][Markdown]][Markdown-url]
+[![Python][python-shield]][python-url] [![isort][isort-shield]][isort-url] [![Black][black-shield]][black-url] [![Ruff][ruff-shield]][ruff-url] [![MyPy][mypy-shield]][mypy-url] [![pre-commit][pre-commit-shield]][pre-commit-url] [![GitHub Actions][github-actions-shield]][github-actions-url] [![Poetry][poetry-shield]][poetry-url] [![Pycharm][pycharm-shield]][pycharm-url] [![Visual Studio Code][visual-studio-code-shield]][visual-studio-code-url] [![Markdown][markdown-shield]][markdown-url] [![License: MIT][license-shield]][license-url]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -79,7 +76,7 @@ Software Craftsmanship by Robert C. Martin.
 
 ### Prerequisites
 
-- [Python 3.11][Python-docs]
+- [Python 3.11][python-docs]
 
 ### Installation
 
@@ -91,21 +88,17 @@ Software Craftsmanship by Robert C. Martin.
    ```
    cd design-patterns
    ```
-3. Create a **virtual environment** _venv_
+3. Install **Poetry** package manager
    ```
-   python -m venv venv
+   pip install poetry
    ```
-4. Activate **environment** in Windows
+4. Install the project's **dependencies**
    ```
-   .\venv\Scripts\activate
+   poetry install
    ```
-5. Or with Unix/Mac OS X
+5. Activate the **environment**
    ```
-   source venv/bin/activate
-   ```
-6. Install requirements with PIP
-   ```
-   pip install -r requirements.txt
+   poetry shell
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -114,9 +107,7 @@ Software Craftsmanship by Robert C. Martin.
 
 ### Usage
 
-1. If found **sample.env**, rename it to **.env**.
-2. Replace your **credentials** into the _.env_ file.
-3. Execute with console
+1. Execute with console
    ```
    python main.py
    ```
@@ -127,7 +118,7 @@ Software Craftsmanship by Robert C. Martin.
 
 ## Contributing
 
-[![GitHub][GitHub]][github-url]
+[![GitHub][github-shield]][github-url]
 
 If you have a suggestion that would make this better, please fork the repo and
 create a pull request.
@@ -156,7 +147,7 @@ autocompletion: [Tabnine](https://www.tabnine.com/install)
 
 ## License
 
-Distributed under the MIT License.
+Distributed under the MIT License. See [LICENSE](LICENSE) for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -164,27 +155,80 @@ Distributed under the MIT License.
 
 ## Contact
 
-- [![LinkedIn][LinkedIn]][linkedin-url]
+- [![LinkedIn][linkedin-shield]][linkedin-url]
 
-- [![Outlook][Outlook]](mailto:jpcadena@espol.edu.ec?subject=[GitHub]tweets-classification-backend)
+- [![Outlook][outlook-shield]](mailto:jpcadena@espol.edu.ec?subject=[GitHub]design-patterns)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[LinkedIn]: https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white
-[linkedin-url]: https://linkedin.com/in/juanpablocadenaaguilar
-[Outlook]: https://img.shields.io/badge/Microsoft_Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white
 [project-screenshot]: assets/images/project.png
-[Python]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
+
+[python-docs]: https://docs.python.org/3.11/
+
+[//]: # "Shields"
+
+[linkedin-shield]: https://img.shields.io/badge/linkedin-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white
+
+[outlook-shield]: https://img.shields.io/badge/Microsoft_Outlook-0078D4?style=for-the-badge&logo=microsoft-outlook&logoColor=white
+
+[python-shield]: https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54
+
+[pycharm-shield]: https://img.shields.io/badge/PyCharm-21D789?style=for-the-badge&logo=pycharm&logoColor=white
+
+[markdown-shield]: https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white
+
+[github-shield]: https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white
+
+[ruff-shield]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/charliermarsh/ruff/main/assets/badge/v1.json
+
+[black-shield]: https://img.shields.io/badge/code%20style-black-000000.svg?style=for-the-badge&logo=appveyor
+
+[mypy-shield]: https://img.shields.io/badge/mypy-checked-2A6DB2.svg?style=for-the-badge&logo=appveyor
+
+[visual-studio-code-shield]: https://img.shields.io/badge/Visual_Studio_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white
+
+[poetry-shield]: https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/python-poetry/website/main/static/badge/v0.json
+
+[isort-shield]: https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336
+
+[github-actions-shield]: https://img.shields.io/badge/github%20actions-%232671E5.svg?style=for-the-badge&logo=githubactions&logoColor=white
+
+[pre-commit-shield]: https://img.shields.io/badge/pre--commit-F7B93E?style=for-the-badge&logo=pre-commit&logoColor=white
+
+[license-shield]: https://img.shields.io/badge/License-MIT-yellow.svg
+
+[github-shield]: https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white
+
+[//]: # "URL"
+
+[linkedin-url]: https://linkedin.com/in/juanpablocadenaaguilar
 [python-url]: https://www.python.org/
-[Python-docs]: https://docs.python.org/3.11/
-[Pylint]: https://img.shields.io/badge/linting-pylint-yellowgreen
-[pylint-url]: https://www.pylint.org/
-[PyCharm]: https://img.shields.io/badge/PyCharm-21D789?style=for-the-badge&logo=pycharm&logoColor=white
-[Pycharm-url]: https://www.jetbrains.com/pycharm/
-[Markdown]: https://img.shields.io/badge/Markdown-000000?style=for-the-badge&logo=markdown&logoColor=white
-[Markdown-url]: https://daringfireball.net/projects/markdown/
-[GitHub]: https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white
-[GitHub-url]: https://github.com/jpcadena/design-patterns
+
+[pycharm-url]: https://www.jetbrains.com/pycharm/
+
+[markdown-url]: https://daringfireball.net/projects/markdown/
+
+[github-url]: https://github.com/jpcadena/design-patterns
+
+[ruff-url]: https://beta.ruff.rs/docs/
+
+[black-url]: https://github.com/psf/black
+
+[mypy-url]: http://mypy-lang.org/
+
+[visual-studio-code-url]: https://code.visualstudio.com/
+
+[poetry-url]: https://python-poetry.org/
+
+[isort-url]: https://pycqa.github.io/isort/
+
+[github-actions-url]: https://github.com/features/actions
+
+[pre-commit-url]: https://pre-commit.com/
+
+[license-url]: https://opensource.org/licenses/MIT
+
+[github-url]: https://github.com/jpcadena/design-patterns

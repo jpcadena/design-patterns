@@ -5,7 +5,7 @@ Implement a PersonFactory that has a non-static create_person() method
   name and an id.
 The id of the person should be set as a 0-based index of the object
  created.
-So, the first person the factory makes should have Id=0, second Id=1
+So, the first person the factory makes should have ID=0, second ID=1
  and so on.
 """
 

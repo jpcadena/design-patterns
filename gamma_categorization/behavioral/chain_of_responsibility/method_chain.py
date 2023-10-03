@@ -1,7 +1,7 @@
 """
 Method chain script
 """
-from typing import Self
+from typing import Optional, Self
 
 
 class Creature:
@@ -25,7 +25,7 @@ class CreatureModifier:
 
     def __init__(self, creature: Creature):
         self.creature: Creature = creature
-        self.next_modifier = None
+        self.next_modifier: Optional[CreatureModifier] = None
 
     def add_modifier(self, modifier: Self) -> None:
         """

@@ -71,15 +71,23 @@ class Square(Rectangle):
     """
 
     def __init__(self, size: int) -> None:
-        Rectangle.__init__(self, size, size)
+        super().__init__(size, size)
 
-    @Rectangle.width.setter
+    @property
+    def width(self) -> int:
+        return self._width
+
+    @width.setter
     def width(self, value: int) -> None:
-        _width = _height = value
+        self._width = self._height = value
 
-    @Rectangle.height.setter
+    @property
+    def height(self) -> int:
+        return self._height
+
+    @height.setter
     def height(self, value: int) -> None:
-        _width = _height = value
+        self._width = self._height = value
 
 
 def use_it(rectangle: Rectangle) -> None:

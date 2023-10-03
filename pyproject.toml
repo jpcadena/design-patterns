@@ -1,15 +1,101 @@
+[tool.poetry]
+name = "design-patterns"
+version = "0.1.0"
+description = "Design Patterns for Clean Code in Python"
+license = "MIT"
+authors = ["Juan Pablo Cadena Aguilar <jpcadena@espol.edu.ec>"]
+maintainers = ["Juan Pablo Cadena Aguilar <jpcadena@espol.edu.ec>"]
+readme = "README.md"
+homepage = "https://github.com/jpcadena/design-patterns"
+repository = "https://github.com/jpcadena/design-patterns"
+documentation = "https://github.com/jpcadena/design-patterns"
+keywords = [
+    "python",
+    "poetry",
+    "ruff",
+    "isort",
+    "black-formatter",
+    "mypy",
+    "solid-principles",
+    "design-patterns",
+    "clean-code",
+    "type-hint",
+    "linters"
+]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: System Administrators",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English",
+    "Natural Language :: Spanish",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Documentation",
+    "Topic :: Internet",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Scientific/Engineering",
+    "Topic :: Software Development",
+    "Topic :: Software Development :: Version Control",
+    "Topic :: Software Development :: Version Control :: CVS",
+    "Topic :: Software Development :: Version Control :: Git",
+    "Topic :: Text Processing :: Markup :: reStructuredText",
+    "Typing :: Typed",
+]
+packages = [{ include = "design_patterns" }]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+isort = "^5.12.0"
+mypy = "^1.5.1"
+black = "^23.9.1"
+ruff = "^0.0.292"
+pre-commit = "^3.4.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+atomic = true
+skip_gitignore = true
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+multi_line_output = 3
+include_trailing_comma = true
+force_grid_wrap = 0
+use_parentheses = true
+ensure_newline_before_comments = true
+line_length = 80
+profile = "black"
+
 [tool.black]
 line-length = 80
 target-version = ["py311"]
-exclude = ["**/venv/*", "**/.mypy_cache/*"]
+exclude = '''
+(
+    /(\.venv
+  | \.mypy_cache
+  | \.ruff_cache
+  | \.pytest_cache
+  | cache
+  | venv
+  | tests)/
+)
+'''
 skip-string-normalization = true
 
 [tool.mypy]
 python_version = "3.11"
+strict = true
 show_error_codes = true
 warn_redundant_casts = true
 warn_unused_ignores = true
-exclude = "venv|.mypy_cache"
+exclude = ".venv|venv|tests|cache|.mypy_cache|.ruff_cache|.pytest_cache"
 disallow_any_generics = true
 disallow_subclassing_any = true
 disallow_untyped_calls = true
@@ -19,14 +105,141 @@ disallow_untyped_decorators = true
 no_implicit_optional = true
 warn_return_any = true
 implicit_reexport = false
+strict_optional = true
 strict_equality = true
+follow_imports = "silent"
+no_implicit_reexport = true
+ignore_missing_imports = true
 
-[tool.isort]
-sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
-multi_line_output = 3
-include_trailing_comma = true
-force_grid_wrap = 0
-use_parentheses = true
-ensure_newline_before_comments = true
-line_length = 80
-profile = "black"
+[tool.mypy-tests]
+ignore_errors = true
+
+[tool.ruff]
+select = ["E", "F"]
+ignore = []
+fixable = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "I",
+    "N",
+    "Q",
+    "S",
+    "T",
+    "W",
+    "ANN",
+    "ARG",
+    "BLE",
+    "COM",
+    "DJ",
+    "DTZ",
+    "EM",
+    "ERA",
+    "EXE",
+    "FBT",
+    "ICN",
+    "INP",
+    "ISC",
+    "NPY",
+    "PD",
+    "PGH",
+    "PIE",
+    "PL",
+    "PT",
+    "PTH",
+    "PYI",
+    "RET",
+    "RSE",
+    "RUF",
+    "SIM",
+    "SLF",
+    "TCH",
+    "TID",
+    "TRY",
+    "UP",
+    "YTT",
+]
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".pytest_cache",
+    "cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+line-length = 80
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+target-version = "py311"
+
+[tool.ruff.mccabe]
+max-complexity = 10
+
+[tool.bandit]
+tests = ["B201", "B301"]
+skips = ["B101", "B601"]
+
+[tool.poetry.scripts]
+test = "pytest"
+
+[tool.pytest]
+addopts = [
+    "-rxXs", # Display extra info for test failures
+    "--strict-config", # Enforce strict pytest configuration
+    "--strict-markers", # Enforce strict markers
+    "--ignore=docs_src", # Ignore the 'docs_src' directory
+]
+xfail_strict = true
+junit_family = "xunit2"
+filterwarnings = [
+    "error",
+    'ignore:The loop argument is deprecated since Python 3\.8, and scheduled for removal in Python 3\.10:DeprecationWarning:asyncio',
+    "ignore:'cgi' is deprecated:DeprecationWarning",
+    "ignore:'crypt' is deprecated and slated for removal in Python 3.13:DeprecationWarning",
+    "ignore:You seem to already have a custom.*:RuntimeWarning:trio",
+    "ignore::trio.TrioDeprecationWarning",
+    'ignore::pytest.PytestDeprecationWarning:pytest_cov',
+]
+
+[tool.coverage.run]
+parallel = true
+source = ["tests", "app"]
+context = "."
+omit = [
+    ".ruff_cache/*",
+    ".mypy_cache/*",
+    ".pytest_cache/*",
+    "cache/*",
+    ".venv/*",
+    "venv/*",
+]
+
+[tool.coverage.report]
+precision = 2
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if TYPE_CHECKING:",
+    "@typing.overload",
+    "raise NotImplementedError",
+]

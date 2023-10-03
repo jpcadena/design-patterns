@@ -6,12 +6,16 @@ from collections.abc import Iterable
 from typing import Any, Generator, Self
 
 
-class Connectable(Iterable, ABC):
+class Connectable(Iterable['Connectable'], ABC):
     """
     Connectable class based on Iterable and Abstract Base Class.
     """
 
-    def connect_to(self, other: Self) -> None:
+    def __init__(self) -> None:
+        self.inputs: list[Connectable] = []
+        self.outputs: list[Connectable] = []
+
+    def connect_to(self, other: 'Connectable') -> None:
         """
         Connect one object to another object.
         :param other: Other object to connect
@@ -33,9 +37,8 @@ class Neuron(Connectable):
     """
 
     def __init__(self, name: str):
+        super().__init__()
         self.name: str = name
-        self.inputs: list[Any] = []
-        self.outputs: list[Any] = []
 
     def __str__(self) -> str:
         return (

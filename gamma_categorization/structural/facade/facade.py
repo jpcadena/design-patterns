@@ -45,7 +45,7 @@ class Viewport:
         :return: The character at position
         :rtype: str
         """
-        return self.buffer[index + self.offset]
+        return str(self.buffer[index + self.offset])
 
     def append(self, text: str) -> None:
         """
