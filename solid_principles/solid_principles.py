@@ -1,5 +1,5 @@
 """
-S.O.L.I.D Design Principles package initialization
+A module for solid principles in the solid principles package.
 """
 
 # Clean Code: A Handbook of Agile Software Craftsmanship

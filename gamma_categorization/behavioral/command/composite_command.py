@@ -1,78 +1,14 @@
 """
 Composite Command a.k.a. Macro script
 """
-from abc import ABC
-from enum import Enum
 from typing import Any
+
+from command import BankAccountCommand, Command
 
 from gamma_categorization.behavioral.command.command import BankAccount
 
 
-class Command(ABC):
-    """
-    Command class that inherits from Abstract Base Class.
-    """
-
-    def __init__(self) -> None:
-        self.success: bool = False
-
-    def invoke(self) -> None:
-        """
-        Invoke the command
-        :return: None
-        :rtype: NoneType
-        """
-
-    def undo(self) -> None:
-        """
-        Undo the command
-        :return: None
-        :rtype: NoneType
-        """
-
-
-class BankAccountCommand(Command):
-    """
-    Bank Account Command that inherits from Command.
-    """
-
-    def __init__(self, account: BankAccount, action: Enum, amount: int):
-        super().__init__()
-        self.amount: int = amount
-        self.action: Enum = action
-        self.account: BankAccount = account
-
-    class Action(int, Enum):
-        """
-        Action class that inherits from Python built-in Enum.
-        """
-
-        DEPOSIT: int = 0
-        WITHDRAW: int = 1
-
-    def invoke(self) -> None:
-        if self.action == self.Action.DEPOSIT:
-            self.account.deposit(self.amount)
-            self.success = True
-        elif self.action == self.Action.WITHDRAW:
-            self.success = self.account.withdraw(self.amount)
-
-    def undo(self) -> None:
-        if not self.success:
-            return
-        # strictly speaking this is not correct
-        # (you don't undo a deposit by withdrawing)
-        # but it works for this demo, so...
-        if self.action == self.Action.DEPOSIT:
-            self.account.withdraw(self.amount)
-        elif self.action == self.Action.WITHDRAW:
-            self.account.deposit(self.amount)
-
-
-# try using this before using MoneyTransferCommand!
-
-
-class CompositeBankAccountCommand(Command, list[Any]):
+class CompositeBankAccountCommand(Command, list[Any]):  # type: ignore
     """
     Composite Bank Account Command class that inherits from Command and
      Python built-in list.

@@ -1,7 +1,7 @@
 """
 Monostate script
 """
-from typing import Any, Self
+from typing import Any
 
 
 class CEO:
@@ -27,8 +27,10 @@ class Monostate:
 
     _shared_state: dict[str, Any] = {}
 
-    def __new__(cls, *args: tuple[Any, ...], **kwargs: dict[str, Any]) -> Self:
-        obj = super(Monostate, cls).__new__(cls, *args, **kwargs)
+    def __new__(
+        cls, *args: tuple[Any, ...], **kwargs: dict[str, Any]
+    ) -> "Monostate":
+        obj = super().__new__(cls, *args, **kwargs)
         obj.__dict__ = cls._shared_state
         return obj
 

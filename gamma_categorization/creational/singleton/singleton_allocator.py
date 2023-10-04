@@ -2,7 +2,7 @@
 Singleton Allocator script
 """
 import secrets
-from typing import Any, Self
+from typing import Any
 
 
 class Database:
@@ -19,9 +19,11 @@ class Database:
 
     _instance = None
 
-    def __new__(cls, *args: tuple[Any, ...], **kwargs: dict[str, Any]) -> Self:
+    def __new__(
+        cls, *args: tuple[Any, ...], **kwargs: dict[str, Any]
+    ) -> "Database":
         if not cls._instance:
-            cls._instance = super(Database, cls).__new__(cls, *args, **kwargs)
+            cls._instance = super().__new__(cls, *args, **kwargs)
         return cls._instance
 
 

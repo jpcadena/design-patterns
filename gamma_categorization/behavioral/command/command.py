@@ -51,6 +51,9 @@ class Command(ABC):
     Command class that inherits from Abstract Base Class.
     """
 
+    def __init__(self) -> None:
+        self.success: Optional[bool] = False
+
     def invoke(self) -> None:
         """
         Invoke method
@@ -72,6 +75,7 @@ class BankAccountCommand(Command):
     """
 
     def __init__(self, account: BankAccount, action: Enum, amount: int):
+        super().__init__()
         self.amount: int = amount
         self.action: Enum = action
         self.account: BankAccount = account
