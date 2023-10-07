@@ -32,7 +32,7 @@ class Switch:
 
 class State(ABC):
     """
-    State representation from Abstract Based Class
+    State representation from Abstract Base Class
     """
 
     def on(self, switch: Switch) -> None:
