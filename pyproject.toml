@@ -52,9 +52,9 @@ packages = [{ include = "design_patterns" }]
 [tool.poetry.dependencies]
 python = "^3.11"
 isort = "^5.13.2"
-mypy = "^1.8.0"
 black = "^23.12.1"
-ruff = "^0.1.13"
+ruff = "^0.1.14"
+mypy = "^1.8.0"
 pre-commit = "^3.6.0"
 
 [build-system]
@@ -88,31 +88,6 @@ exclude = '''
 )
 '''
 skip-string-normalization = true
-
-[tool.mypy]
-python_version = "3.11"
-strict = true
-show_error_codes = true
-warn_redundant_casts = true
-warn_unused_ignores = true
-exclude = ".venv|venv|tests|cache|.mypy_cache|.ruff_cache|.pytest_cache"
-disallow_any_generics = true
-disallow_subclassing_any = true
-disallow_untyped_calls = true
-disallow_untyped_defs = true
-check_untyped_defs = true
-disallow_untyped_decorators = true
-no_implicit_optional = true
-warn_return_any = true
-implicit_reexport = false
-strict_optional = true
-strict_equality = true
-follow_imports = "silent"
-no_implicit_reexport = true
-ignore_missing_imports = true
-
-[tool.mypy-tests]
-ignore_errors = true
 
 [tool.ruff]
 select = ["E", "F"]
@@ -194,6 +169,31 @@ target-version = "py311"
 
 [tool.ruff.mccabe]
 max-complexity = 10
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+show_error_codes = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+exclude = ".venv|venv|tests|cache|.mypy_cache|.ruff_cache|.pytest_cache"
+disallow_any_generics = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_return_any = true
+implicit_reexport = false
+strict_optional = true
+strict_equality = true
+follow_imports = "silent"
+no_implicit_reexport = true
+ignore_missing_imports = true
+
+[tool.mypy-tests]
+ignore_errors = true
 
 [tool.bandit]
 tests = ["B201", "B301"]
