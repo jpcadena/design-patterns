@@ -1,6 +1,7 @@
 """
 Virtual Proxy script
 """
+
 from typing import Optional, Union
 
 

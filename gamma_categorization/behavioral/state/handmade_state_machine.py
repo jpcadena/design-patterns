@@ -2,6 +2,7 @@
 A module for handmade state machine in the
  gamma categorization.behavioral.state package.
 """
+
 from enum import Enum, auto
 
 
@@ -30,7 +31,7 @@ class Trigger(Enum):
     LEFT_MESSAGE = auto()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     rules: dict[State, list[tuple[Trigger, State]]] = {
         State.OFF_HOOK: [(Trigger.CALL_DIALED, State.CONNECTING)],
         State.CONNECTING: [
@@ -50,11 +51,11 @@ if __name__ == '__main__':
     state: State = State.OFF_HOOK
     exit_state: State = State.ON_HOOK
     while state != exit_state:
-        print(f'The phone is currently {state}')
+        print(f"The phone is currently {state}")
         for i in range(len(rules[state])):
             t = rules[state][i][0]
-            print(f'{i}: {t}')
-        idx = int(input('Select a trigger:'))
+            print(f"{i}: {t}")
+        idx = int(input("Select a trigger:"))
         s = rules[state][idx][1]
         state = s
-    print('We are done using the phone.')
+    print("We are done using the phone.")

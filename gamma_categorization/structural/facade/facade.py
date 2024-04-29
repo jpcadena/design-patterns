@@ -1,6 +1,7 @@
 """
 Façade script
 """
+
 from typing import Union
 
 

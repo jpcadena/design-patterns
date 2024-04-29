@@ -1,6 +1,7 @@
 """
 Singleton Decorator script
 """
+
 from functools import wraps
 from typing import Any, Type
 

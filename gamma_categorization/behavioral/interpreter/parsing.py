@@ -1,6 +1,7 @@
 """
 A module for parsing in the gamma categorization.behavioral.interpreter package.
 """
+
 from enum import Enum
 from typing import Optional
 
@@ -108,13 +109,13 @@ def evaluate(_input: str) -> None:
     :rtype: NoneType
     """
     tokens: list[Token] = lex(_input)
-    print(' '.join(map(str, tokens)))
+    print(" ".join(map(str, tokens)))
     parsed: BinaryOperation = parse(tokens)
-    print(f'{_input} = {parsed.value}')
+    print(f"{_input} = {parsed.value}")
 
 
-if __name__ == '__main__':
-    evaluate('(13+4)-(12+1)')
-    evaluate('1+(3-4)')
+if __name__ == "__main__":
+    evaluate("(13+4)-(12+1)")
+    evaluate("1+(3-4)")
     # this won't work
-    evaluate('1+2+(3-4)')
+    evaluate("1+2+(3-4)")

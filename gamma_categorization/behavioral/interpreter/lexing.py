@@ -1,6 +1,7 @@
 """
 A module for lexing in the gamma categorization.behavioral.interpreter package.
 """
+
 from abc import ABC
 from enum import Enum
 
@@ -41,7 +42,7 @@ class Token:
         self.text: str = text
 
     def __str__(self) -> str:
-        return f'`{self.text}`'
+        return f"`{self.text}`"
 
 
 def lex(_input: str) -> list[Token]:
@@ -55,14 +56,14 @@ def lex(_input: str) -> list[Token]:
     result: list[Token] = []
     i: int = 0
     while i < len(_input):
-        if _input[i] == '+':
-            result.append(Token(Token.Type.PLUS, '+'))
-        elif _input[i] == '-':
-            result.append(Token(Token.Type.MINUS, '-'))
-        elif _input[i] == '(':
-            result.append(Token(Token.Type.LPAREN, '('))
-        elif _input[i] == ')':
-            result.append(Token(Token.Type.RPAREN, ')'))
+        if _input[i] == "+":
+            result.append(Token(Token.Type.PLUS, "+"))
+        elif _input[i] == "-":
+            result.append(Token(Token.Type.MINUS, "-"))
+        elif _input[i] == "(":
+            result.append(Token(Token.Type.LPAREN, "("))
+        elif _input[i] == ")":
+            result.append(Token(Token.Type.RPAREN, ")"))
         else:  # must be a number
             digits: list[str] = [_input[i]]
             for j in range(i + 1, len(_input)):
@@ -70,7 +71,7 @@ def lex(_input: str) -> list[Token]:
                     digits.append(_input[j])
                     i += 1
                 else:
-                    result.append(Token(Token.Type.INTEGER, ''.join(digits)))
+                    result.append(Token(Token.Type.INTEGER, "".join(digits)))
                     break
         i += 1
     return result
@@ -85,11 +86,11 @@ def evaluate(_input: str) -> None:
     :rtype: NoneType
     """
     tokens: list[Token] = lex(_input)
-    print(' '.join(map(str, tokens)))
+    print(" ".join(map(str, tokens)))
 
 
-if __name__ == '__main__':
-    evaluate('(13+4)-(12+1)')
-    evaluate('1+(3-4)')
+if __name__ == "__main__":
+    evaluate("(13+4)-(12+1)")
+    evaluate("1+(3-4)")
     # this won't work
-    evaluate('1+2+(3-4)')
+    evaluate("1+2+(3-4)")

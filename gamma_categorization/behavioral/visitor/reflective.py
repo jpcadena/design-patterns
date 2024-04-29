@@ -1,6 +1,7 @@
 """
 A module for reflective in the gamma categorization.behavioral.visitor package.
 """
+
 from abc import ABC
 
 
@@ -34,11 +35,11 @@ class ExpressionPrinter:
         if isinstance(expression, DoubleExpression):
             buffer.append(str(expression.value))
         elif isinstance(expression, AdditionExpression):
-            buffer.append('(')
+            buffer.append("(")
             ExpressionPrinter.print(expression.left, buffer)
-            buffer.append('+')
+            buffer.append("+")
             ExpressionPrinter.print(expression.right, buffer)
-            buffer.append(')')
+            buffer.append(")")
 
     Expression.print = lambda self, b: ExpressionPrinter.print(  # type: ignore
         self, b
@@ -47,7 +48,7 @@ class ExpressionPrinter:
 
 # still breaks OCP because new types require M×N modifications
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # represents 1+(2+3)
     additional_expression: AdditionExpression = AdditionExpression(
         DoubleExpression(1),
@@ -59,4 +60,4 @@ if __name__ == '__main__':
     # IDE might complain here
     # additional_expression.print(my_buffer)
 
-    print(''.join(my_buffer))
+    print("".join(my_buffer))

@@ -2,6 +2,7 @@
 A module for visitor refined in the gamma categorization.behavioral.visitor
  package.
 """
+
 from typing import Optional
 
 from gamma_categorization.behavioral.visitor.visitor import (
@@ -42,7 +43,7 @@ class ExpressionEvaluator:
             self.value += temp
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # represents 1+(2+3)
     e: AdditionExpression = AdditionExpression(
         DoubleExpression(1),
@@ -57,4 +58,4 @@ if __name__ == '__main__':
     evaluator.visit_double_expression(e.left)
     evaluator.visit_addition_expression(e.right)
     if evaluator.value is not None:
-        print(f'{printer} = {evaluator.value}')
+        print(f"{printer} = {evaluator.value}")

@@ -1,6 +1,7 @@
 """
 Monostate script
 """
+
 from typing import Any
 
 

@@ -3,6 +3,7 @@ Builder Coding Exercise
 You are asked to implement the Builder design pattern for rendering
  simple chunks of code.
 """
+
 from typing import Self
 
 # Sample use of the builder you are asked to create:

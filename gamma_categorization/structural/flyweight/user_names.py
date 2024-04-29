@@ -1,6 +1,7 @@
 """
 Flyweight script for Usernames
 """
+
 import secrets
 import string
 

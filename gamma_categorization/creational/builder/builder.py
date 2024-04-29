@@ -1,6 +1,7 @@
 """
 Builder script
 """
+
 from typing import Any
 
 # text: str = 'hello'

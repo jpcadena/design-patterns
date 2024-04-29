@@ -5,6 +5,7 @@ Implement Line.deep_copy() to perform a deep copy of the given Line
 This method should return a copy of a Line that contains copies of its
  start/end points.
 """
+
 from typing import Any
 
 

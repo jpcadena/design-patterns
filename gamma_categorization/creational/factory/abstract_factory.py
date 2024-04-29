@@ -1,6 +1,7 @@
 """
 Abstract Factory
 """
+
 from abc import ABC, abstractmethod
 from enum import Enum, auto
 from typing import Type

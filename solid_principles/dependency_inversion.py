@@ -1,6 +1,7 @@
 """
 Dependency Inversion Principle
 """
+
 from abc import abstractmethod
 from enum import Enum
 from typing import Any, Generator

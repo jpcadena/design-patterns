@@ -1,6 +1,7 @@
 """
 A module for state in the gamma categorization.behavioral.state package.
 """
+
 # interesting but not practical :)
 from abc import ABC
 
@@ -43,7 +44,7 @@ class State(ABC):
         :return: None
         :rtype: NoneType
         """
-        print('Light is already on')
+        print("Light is already on")
 
     def off(self, switch: Switch) -> None:
         """
@@ -53,28 +54,28 @@ class State(ABC):
         :return: None
         :rtype: NoneType
         """
-        print('Light is already off')
+        print("Light is already off")
 
 
 class OnState(State):
     def __init__(self) -> None:
-        print('Light turned on')
+        print("Light turned on")
 
     def off(self, switch: Switch) -> None:
-        print('Turning light off...')
+        print("Turning light off...")
         switch.state = OffState()
 
 
 class OffState(State):
     def __init__(self) -> None:
-        print('Light turned off')
+        print("Light turned off")
 
     def on(self, switch: Switch) -> None:
-        print('Turning light on...')
+        print("Turning light on...")
         switch.state = OnState()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     my_switch: Switch = Switch()
     my_switch.on()  # Turning light on...
     # Light turned on

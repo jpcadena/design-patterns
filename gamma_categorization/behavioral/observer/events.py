@@ -1,6 +1,7 @@
 """
 A module for events in the gamma categorization.behavioral.observer package.
 """
+
 from typing import Any
 
 
@@ -43,12 +44,12 @@ def call_doctor(name: str, address: str) -> None:
         :return: None
         :rtype: NoneType
     """
-    print(f'A doctor has been called to {address}')
+    print(f"A doctor has been called to {address}")
 
 
-if __name__ == '__main__':
-    person = Person('Sherlock', '221B Baker St')
-    person.falls_ill.append(lambda name, addr: print(f'{name} is ill'))
+if __name__ == "__main__":
+    person = Person("Sherlock", "221B Baker St")
+    person.falls_ill.append(lambda name, addr: print(f"{name} is ill"))
     person.falls_ill.append(call_doctor)
     person.catch_a_cold()
     # and you can remove subscriptions too

@@ -1,6 +1,7 @@
 """
 Open-Closed Principle
 """
+
 from enum import Enum
 from typing import Any, Generator, Self
 
@@ -180,7 +181,7 @@ class AndSpecification(Specification):
         self.args: tuple[Specification, ...] = args
 
     def is_satisfied(self, item: Product) -> bool:
-        return all(map(lambda spec: spec.is_satisfied(item), self.args))
+        return all(spec.is_satisfied(item) for spec in self.args)
 
 
 class BetterFilter(Filter):

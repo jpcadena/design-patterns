@@ -2,7 +2,6 @@
 Adapter with no caching script
 """
 
-
 # A construct which adapts an existing interface to conform to the required
 # interface
 

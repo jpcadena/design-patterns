@@ -1,6 +1,7 @@
 """
 Bridge Coding Exercise
 """
+
 from abc import ABC
 from typing import Any, Optional
 

@@ -1,6 +1,7 @@
 """
 Decorator Coding Exercise
 """
+
 from typing import Union
 
 

@@ -1,6 +1,7 @@
 """
 A module for events in the gamma categorization.behavioral.mediator package.
 """
+
 from typing import Any
 
 
@@ -82,12 +83,12 @@ class Coach:
         :rtype: NoneType
         """
         if isinstance(args, GoalScoredInfo) and args.goals_scored < 3:
-            print(f'Coach says: well done, {args.who_scored}!')
+            print(f"Coach says: well done, {args.who_scored}!")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     my_game: Game = Game()
-    player: Player = Player('Sam', my_game)
+    player: Player = Player("Sam", my_game)
     coach: Coach = Coach(my_game)
     player.score()  # Coach says: well done, Sam!
     player.score()  # Coach says: well done, Sam!

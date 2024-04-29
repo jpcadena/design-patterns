@@ -1,6 +1,7 @@
 """
 A module for exercise in the gamma categorization.behavioral.visitor package.
 """
+
 from typing import Any, Callable, Type, Union
 
 
@@ -12,7 +13,7 @@ def _qualname(obj: Any) -> str:
     :return: Fully-qualified name
     :rtype: str
     """
-    return str(obj.__module__ + '.' + obj.__qualname__)
+    return str(obj.__module__ + "." + obj.__qualname__)
 
 
 def _declaring_class(obj: object) -> str:
@@ -24,7 +25,7 @@ def _declaring_class(obj: object) -> str:
     :rtype: str
     """
     name: str = _qualname(obj)
-    return name[: name.rfind('.')]
+    return name[: name.rfind(".")]
 
 
 _methods: dict[tuple[str, Type[Any]], Callable[[Any, Any], None]] = {}
@@ -87,9 +88,9 @@ class AdditionExpression:
     The addition expression
     """
 
-    def __init__(self, left: 'Expression', right: 'Expression') -> None:
-        self.right: 'Expression' = right
-        self.left: 'Expression' = left
+    def __init__(self, left: "Expression", right: "Expression") -> None:
+        self.right: "Expression" = right
+        self.left: "Expression" = left
 
 
 class MultiplicationExpression:
@@ -97,9 +98,9 @@ class MultiplicationExpression:
     The multiplication expression
     """
 
-    def __init__(self, left: 'Expression', right: 'Expression') -> None:
-        self.right: 'Expression' = right
-        self.left: 'Expression' = left
+    def __init__(self, left: "Expression", right: "Expression") -> None:
+        self.right: "Expression" = right
+        self.left: "Expression" = left
 
 
 Expression = Union[Value, AdditionExpression, MultiplicationExpression]
@@ -133,11 +134,11 @@ class ExpressionPrinter:
         :return: None
         :rtype: NoneType
         """
-        self.buffer.append('(')
+        self.buffer.append("(")
         self.visit(ae.left)
-        self.buffer.append('+')
+        self.buffer.append("+")
         self.visit(ae.right)
-        self.buffer.append(')')
+        self.buffer.append(")")
 
     @visitor(MultiplicationExpression)  # type: ignore
     def visit(self, me: MultiplicationExpression) -> None:  # noqa: F811
@@ -149,7 +150,7 @@ class ExpressionPrinter:
         :rtype: NoneType
         """
         self.visit(me.left)
-        self.buffer.append('*')
+        self.buffer.append("*")
         self.visit(me.right)
 
     def __str__(self) -> str:
@@ -158,4 +159,4 @@ class ExpressionPrinter:
         :return: String representation
         :rtype: str
         """
-        return ''.join(self.buffer)
+        return "".join(self.buffer)

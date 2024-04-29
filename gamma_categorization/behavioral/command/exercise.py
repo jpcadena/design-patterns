@@ -1,6 +1,7 @@
 """
 Command Coding Exercise
 """
+
 from enum import Enum
 
 

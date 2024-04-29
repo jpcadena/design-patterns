@@ -1,12 +1,13 @@
 """
 Neural network script for Composite design pattern
 """
+
 from abc import ABC
 from collections.abc import Iterable
 from typing import Any, Generator, Self
 
 
-class Connectable(Iterable['Connectable'], ABC):
+class Connectable(Iterable["Connectable"], ABC):
     """
     Connectable class based on Iterable and Abstract Base Class.
     """
@@ -15,7 +16,7 @@ class Connectable(Iterable['Connectable'], ABC):
         self.inputs: list[Connectable] = []
         self.outputs: list[Connectable] = []
 
-    def connect_to(self, other: 'Connectable') -> None:
+    def connect_to(self, other: "Connectable") -> None:
         """
         Connect one object to another object.
         :param other: Other object to connect

@@ -1,6 +1,7 @@
 """
 Composite Coding Exercise
 """
+
 from typing import Any, Generator, Iterator, Union
 
 

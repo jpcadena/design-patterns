@@ -1,6 +1,7 @@
 """
 Bridge script
 """
+
 from abc import ABC
 
 

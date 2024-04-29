@@ -1,6 +1,7 @@
 """
 Python functional Decorator script
 """
+
 import time
 from typing import Any, Callable
 

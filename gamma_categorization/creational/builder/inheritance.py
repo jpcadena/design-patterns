@@ -1,6 +1,7 @@
 """
 Main script
 """
+
 from typing import Any, Optional, Self
 
 

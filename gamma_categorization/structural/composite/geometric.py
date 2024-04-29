@@ -1,6 +1,7 @@
 """
 Geometric shape script for Composite design pattern
 """
+
 from typing import Any, Optional
 
 

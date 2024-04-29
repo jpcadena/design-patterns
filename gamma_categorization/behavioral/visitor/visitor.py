@@ -1,6 +1,7 @@
 """
 A module for visitor in the gamma categorization.behavioral.visitor package.
 """
+
 from typing import Any, Callable, Type, Union
 
 _methods: dict[tuple[str, Type[Any]], Callable[[Any, Any], None]] = {}
@@ -14,7 +15,7 @@ def _qualname(obj: Any) -> str:
     :return: The fully-qualified name of the object
     :rtype: str
     """
-    return str(obj.__module__ + '.' + obj.__qualname__)
+    return str(obj.__module__ + "." + obj.__qualname__)
 
 
 def _declaring_class(obj: Any) -> str:
@@ -26,7 +27,7 @@ def _declaring_class(obj: Any) -> str:
     :rtype: str
     """
     name: str = _qualname(obj)
-    return name[: name.rfind('.')]
+    return name[: name.rfind(".")]
 
 
 def _visitor_impl(self: Any, arg: Any) -> None:
@@ -94,8 +95,8 @@ class AdditionExpression:
 
     def __init__(
         self,
-        left: Union['AdditionExpression', DoubleExpression],
-        right: Union['AdditionExpression', DoubleExpression],
+        left: Union["AdditionExpression", DoubleExpression],
+        right: Union["AdditionExpression", DoubleExpression],
     ):
         """
         Initialize an AdditionExpression.
@@ -103,8 +104,8 @@ class AdditionExpression:
         :param left: The left expression.
         :param right: The right expression.
         """
-        self.left: Union['AdditionExpression', DoubleExpression] = left
-        self.right: Union['AdditionExpression', DoubleExpression] = right
+        self.left: Union["AdditionExpression", DoubleExpression] = left
+        self.right: Union["AdditionExpression", DoubleExpression] = right
 
     def accept(self, visitor: Any) -> None:
         """Accept a visitor."""
@@ -128,18 +129,18 @@ class ExpressionPrinter:
     @visitor(AdditionExpression)
     def visit_addition_expression(self, ae: AdditionExpression) -> None:
         """Visit an AdditionExpression."""
-        self.buffer.append('(')
+        self.buffer.append("(")
         ae.left.accept(self)
-        self.buffer.append('+')
+        self.buffer.append("+")
         ae.right.accept(self)
-        self.buffer.append(')')
+        self.buffer.append(")")
 
     def __str__(self) -> str:
         """Convert the buffer to a string."""
-        return ''.join(self.buffer)
+        return "".join(self.buffer)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # represents 1+(2+3)
     e = AdditionExpression(
         DoubleExpression(1),

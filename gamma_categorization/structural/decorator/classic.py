@@ -1,6 +1,7 @@
 """
 Classic decorator script
 """
+
 from abc import ABC
 
 

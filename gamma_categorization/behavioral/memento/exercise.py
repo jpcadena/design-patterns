@@ -1,6 +1,7 @@
 """
 A module for exercise in the gamma categorization.behavioral.memento package.
 """
+
 from copy import deepcopy
 
 
@@ -13,7 +14,7 @@ class Token:
         self.value: int = value
 
     def __repr__(self) -> str:
-        return f'Token({self.value})'
+        return f"Token({self.value})"
 
 
 class Memento:

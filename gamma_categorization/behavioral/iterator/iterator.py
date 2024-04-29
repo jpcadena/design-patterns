@@ -1,6 +1,7 @@
 """
 A module for iterator in the gamma categorization.behavioral.iterator package.
 """
+
 from typing import Any, Generator, Optional, Self
 
 
@@ -24,7 +25,7 @@ class Node:
         if right:
             right.parent = self
 
-    def __iter__(self) -> Generator['Node', None, None]:
+    def __iter__(self) -> Generator["Node", None, None]:
         yield from traverse_in_order(self)
 
 
@@ -43,7 +44,7 @@ def traverse_in_order(current: Node) -> Generator[Node, Any, None]:
         yield from traverse_in_order(current.right)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     #   1
     #  / \
     # 2   3

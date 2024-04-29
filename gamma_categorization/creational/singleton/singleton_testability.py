@@ -1,6 +1,7 @@
 """
 Singleton Testability script
 """
+
 import os
 import unittest
 from abc import ABC, ABCMeta, abstractmethod

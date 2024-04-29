@@ -1,6 +1,7 @@
 """
 A module for chat room in the gamma categorization.behavioral.mediator package.
 """
+
 from typing import Optional
 
 
@@ -24,8 +25,8 @@ class Person:
         :return: None
         :rtype: NoneType
         """
-        log: str = f'{sender}: {message}'
-        print(f'[{self.name}\'s chat session] {log}')
+        log: str = f"{sender}: {message}"
+        print(f"[{self.name}'s chat session] {log}")
         self.chat_log.append(log)
 
     def say(self, message: str) -> None:
@@ -83,8 +84,8 @@ class ChatRoom:
         :return: None
         :rtype: NoneType
         """
-        join_msg = f'{person.name} joins the chat'
-        self.broadcast('room', join_msg)
+        join_msg = f"{person.name} joins the chat"
+        self.broadcast("room", join_msg)
         person.room = self
         self.people.append(person)
 
@@ -105,15 +106,15 @@ class ChatRoom:
                 person.receive(source, message)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     room: ChatRoom = ChatRoom()
-    john: Person = Person('John')
-    jane: Person = Person('Jane')
+    john: Person = Person("John")
+    jane: Person = Person("Jane")
     room.join(john)
     room.join(jane)
-    john.say('hi room')
-    jane.say('oh, hey john')
-    simon: Person = Person('Simon')
+    john.say("hi room")
+    jane.say("oh, hey john")
+    simon: Person = Person("Simon")
     room.join(simon)
-    simon.say('hi everyone!')
-    jane.private_message('Simon', 'glad you could join us!')
+    simon.say("hi everyone!")
+    jane.private_message("Simon", "glad you could join us!")

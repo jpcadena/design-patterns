@@ -1,6 +1,7 @@
 """
 Chain of Responsibility Coding Exercise
 """
+
 from typing import Any
 
 

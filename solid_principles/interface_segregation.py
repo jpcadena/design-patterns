@@ -1,6 +1,7 @@
 """
 Interface Segregation Principle
 """
+
 from abc import abstractmethod
 from typing import Any
 

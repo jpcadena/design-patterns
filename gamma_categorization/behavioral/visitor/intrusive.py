@@ -1,6 +1,7 @@
 """
 A module for intrusive in the gamma categorization.behavioral.visitor package.
 """
+
 from typing import Self, Union
 
 
@@ -52,11 +53,11 @@ class AdditionExpression:
         :return: None
         :rtype: NoneType
         """
-        buffer.append('(')
+        buffer.append("(")
         self.left.print(buffer)
-        buffer.append('+')
+        buffer.append("+")
         self.right.print(buffer)
-        buffer.append(')')
+        buffer.append(")")
 
     def eval(self) -> int:
         """
@@ -67,7 +68,7 @@ class AdditionExpression:
         return self.left.eval() + self.right.eval()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # represents 1+(2+3)
     e: AdditionExpression = AdditionExpression(
         DoubleExpression(1),
@@ -75,7 +76,7 @@ if __name__ == '__main__':
     )
     my_buffer: list[str] = []
     e.print(my_buffer)
-    print(''.join(my_buffer), '=', e.eval())
+    print("".join(my_buffer), "=", e.eval())
 
     # breaks OCP: requires we modify the entire hierarchy
     # what is more likely: new type or new operation?

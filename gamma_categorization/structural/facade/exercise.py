@@ -1,6 +1,7 @@
 """
 Façade Coding Exercise
 """
+
 import secrets
 
 

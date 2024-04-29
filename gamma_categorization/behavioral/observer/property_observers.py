@@ -2,6 +2,7 @@
 A module for property observers in the gamma categorization.behavioral.observer
  package.
 """
+
 from gamma_categorization.behavioral.observer.events import Event
 
 
@@ -33,7 +34,7 @@ class Person(PropertyObservable):
         if self._age == value:
             return
         self._age = value
-        self.property_changed('age', value)
+        self.property_changed("age", value)
 
 
 class TrafficAuthority:
@@ -55,17 +56,17 @@ class TrafficAuthority:
         :return: None
         :rtype: NoneType
         """
-        if name == 'age':
+        if name == "age":
             if value < 16:
-                print('Sorry, you still cannot drive')
+                print("Sorry, you still cannot drive")
             else:
-                print('Okay, you can drive now')
+                print("Okay, you can drive now")
                 self.person.property_changed.remove(self.person_changed)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     some_person: Person = Person()
     traffic_authority: TrafficAuthority = TrafficAuthority(some_person)
     for some_age in range(14, 20):
-        print(f'Setting age to {some_age}')
+        print(f"Setting age to {some_age}")
         some_person.age = some_age

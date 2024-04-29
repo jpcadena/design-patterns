@@ -10,7 +10,7 @@ class CombinationLock:
 
     def __init__(self, combination: list[int]) -> None:
         self.combination: list[int] = combination
-        self.status: str = 'LOCKED'
+        self.status: str = "LOCKED"
         self.entered_digits: list[int] = []
 
     def reset(self) -> None:
@@ -19,7 +19,7 @@ class CombinationLock:
         :return: None
         :rtype: NoneType
         """
-        self.status = 'LOCKED'
+        self.status = "LOCKED"
         self.entered_digits = []
 
     def enter_digit(self, digit: int) -> None:
@@ -30,11 +30,11 @@ class CombinationLock:
         :return: None
         :rtype: NoneType
         """
-        if self.status in ['LOCKED', 'ERROR']:
+        if self.status in ["LOCKED", "ERROR"]:
             self.reset()
         self.entered_digits.append(digit)
-        self.status = ''.join(map(str, self.entered_digits))
+        self.status = "".join(map(str, self.entered_digits))
         if self.entered_digits == self.combination:
-            self.status = 'OPEN'
+            self.status = "OPEN"
         elif len(self.entered_digits) == len(self.combination):
-            self.status = 'ERROR'
+            self.status = "ERROR"

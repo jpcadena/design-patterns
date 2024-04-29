@@ -9,16 +9,14 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     commit-message:
       prefix: ⬆
-    ignore:
-      - dependency-name: "pytest"
-        versions: ["7.4.2"]
+
   # Python
   - package-ecosystem: "pip"
     directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
     commit-message:
       prefix: ⬆

@@ -1,6 +1,7 @@
 """
 Composite Command a.k.a. Macro script
 """
+
 from typing import Any
 
 from command import BankAccountCommand, Command

@@ -1,6 +1,7 @@
 """
 Dynamic Decorator script
 """
+
 from typing import Any, Iterator, TextIO
 
 

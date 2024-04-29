@@ -1,6 +1,7 @@
 """
 A module for exercise in the gamma categorization.behavioral.iterator package.
 """
+
 from typing import Any, Generator, Optional
 
 
@@ -13,13 +14,13 @@ class Node:
     def __init__(
         self,
         value: int,
-        left: Optional['Node'] = None,
-        right: Optional['Node'] = None,
+        left: Optional["Node"] = None,
+        right: Optional["Node"] = None,
     ) -> None:
-        self.right: Optional['Node'] = right
-        self.left: Optional['Node'] = left
+        self.right: Optional["Node"] = right
+        self.left: Optional["Node"] = left
         self.value: int = value
-        self.parent: Optional['Node'] = None
+        self.parent: Optional["Node"] = None
         if left:
             left.parent = self
         if right:

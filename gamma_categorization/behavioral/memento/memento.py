@@ -42,10 +42,10 @@ class BankAccount:
         self.balance = memento.balance
 
     def __str__(self) -> str:
-        return f'Balance = {self.balance}'
+        return f"Balance = {self.balance}"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     bank_account: BankAccount = BankAccount(100)
     memento1: Memento = bank_account.deposit(50)
     memento2: Memento = bank_account.deposit(25)

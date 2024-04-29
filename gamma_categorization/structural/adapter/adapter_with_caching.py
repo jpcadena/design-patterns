@@ -1,6 +1,7 @@
 """
 Adapter with caching script
 """
+
 from typing import Iterator
 
 from gamma_categorization.structural.adapter.adapter import (

@@ -11,7 +11,7 @@ class Mediator:
     def __init__(self) -> None:
         self.participants: list[Participant] = []
 
-    def add_participant(self, participant: 'Participant') -> None:
+    def add_participant(self, participant: "Participant") -> None:
         """
         Add a participant to the list of participants for the mediator
         :param participant: The participant to add
@@ -21,7 +21,7 @@ class Mediator:
         """
         self.participants.append(participant)
 
-    def broadcast(self, sender: 'Participant', value: int) -> None:
+    def broadcast(self, sender: "Participant", value: int) -> None:
         """
         Broadcast the value by the sender to the class
         :param sender: The participant to broadcast the value

@@ -2,6 +2,7 @@
 A module for exercise in the gamma categorization.behavioral.template
  method package.
 """
+
 from abc import ABC, abstractmethod
 
 

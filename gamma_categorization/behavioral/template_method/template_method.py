@@ -2,6 +2,7 @@
 A module for template in the gamma categorization.behavioral.template method
  package.
 """
+
 from abc import ABC, abstractmethod
 
 
@@ -23,7 +24,7 @@ class Game(ABC):
         self.start()
         while not self.have_winner:
             self.take_turn()
-        print(f'Player {self.winning_player} wins!')
+        print(f"Player {self.winning_player} wins!")
 
     def start(self) -> None:
         """
@@ -70,7 +71,7 @@ class Chess(Game):
 
     def start(self) -> None:
         print(
-            f'Starting a game of chess with {self.number_of_players} players.'
+            f"Starting a game of chess with {self.number_of_players} players."
         )
 
     @property
@@ -78,7 +79,7 @@ class Chess(Game):
         return self.turn == self.max_turns
 
     def take_turn(self) -> None:
-        print(f'Turn {self.turn} taken by player {self.current_player}')
+        print(f"Turn {self.turn} taken by player {self.current_player}")
         self.turn += 1
         self.current_player = 1 - self.current_player
 
@@ -87,6 +88,6 @@ class Chess(Game):
         return self.current_player
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     chess: Chess = Chess()
     chess.run()

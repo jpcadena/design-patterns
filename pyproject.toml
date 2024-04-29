@@ -62,16 +62,20 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.isort]
-atomic = true
+py_version = 311
+skip_glob = ["cache/*", ".ruff_cache/*", ".pytest_cache/*", ".dockerignore", "logs/*"]
 skip_gitignore = true
-sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+line_length = 80
 multi_line_output = 3
+use_parentheses = true
+atomic = true
 include_trailing_comma = true
 force_grid_wrap = 0
-use_parentheses = true
+case_sensitive = true
 ensure_newline_before_comments = true
-line_length = 80
 profile = "black"
+remove_redundant_aliases = true
+color_output = true
 
 [tool.black]
 line-length = 80
@@ -90,8 +94,50 @@ exclude = '''
 skip-string-normalization = true
 
 [tool.ruff]
-select = ["E", "F"]
-ignore = []
+exclude = [
+    ".bzr",
+    ".direnv",
+    ".eggs",
+    ".git",
+    ".git-rewrite",
+    ".hg",
+    ".mypy_cache",
+    ".nox",
+    ".pants.d",
+    ".pytype",
+    ".ruff_cache",
+    ".pytest_cache",
+    "cache",
+    ".svn",
+    ".tox",
+    ".venv",
+    "__pypackages__",
+    "_build",
+    "buck-out",
+    "build",
+    "dist",
+    "node_modules",
+    "venv",
+]
+line-length = 80
+indent-width = 4
+target-version = "py311"
+fix = true
+output-format = "grouped"
+show-fixes = true
+
+[tool.ruff.lint]
+select = [
+    "E", # pycodestyle errors
+    "W", # pycodestyle warnings
+    "F", # pyflakes
+    "I", # isort
+    "C4", # flake8-comprehensions
+]
+ignore = [
+    "E501", # line too long, handled by black
+    "B008", # do not perform function calls in argument defaults
+]
 fixable = [
     "A",
     "B",
@@ -138,108 +184,55 @@ fixable = [
     "UP",
     "YTT",
 ]
-exclude = [
-    ".bzr",
-    ".direnv",
-    ".eggs",
-    ".git",
-    ".git-rewrite",
-    ".hg",
-    ".mypy_cache",
-    ".nox",
-    ".pants.d",
-    ".pytype",
-    ".ruff_cache",
-    ".pytest_cache",
-    "cache",
-    ".svn",
-    ".tox",
-    ".venv",
-    "__pypackages__",
-    "_build",
-    "buck-out",
-    "build",
-    "dist",
-    "node_modules",
-    "venv",
-]
-line-length = 80
+unfixable = []
 dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
-target-version = "py311"
 
-[tool.ruff.mccabe]
+[tool.ruff.format]
+quote-style = "double"
+line-ending = "auto"
+docstring-code-format = true
+docstring-code-line-length = 80
+
+[tool.ruff.lint.mccabe]
 max-complexity = 10
 
+[tool.ruff.lint.pydocstyle]
+convention = "pep257"  # google, numpy
+ignore-decorators = ["typing.overload"]
+
+[tool.ruff.lint.pylint]
+allow-dunder-method-names = ["__tablename__", "__table_args__"]  # PLW3201
+
+[tool.ruff.lint.pyupgrade]
+# Preserve types, even if a file imports `from __future__ import annotations`.
+keep-runtime-typing = true
+
 [tool.mypy]
-python_version = "3.11"
-strict = true
-show_error_codes = true
-warn_redundant_casts = true
-warn_unused_ignores = true
 exclude = ".venv|venv|tests|cache|.mypy_cache|.ruff_cache|.pytest_cache"
+ignore_missing_imports = true
+follow_imports = "silent"
+python_version = "3.11"
 disallow_any_generics = true
 disallow_subclassing_any = true
 disallow_untyped_calls = true
 disallow_untyped_defs = true
+disallow_incomplete_defs = true
 check_untyped_defs = true
 disallow_untyped_decorators = true
-no_implicit_optional = true
+strict_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
 warn_return_any = true
 implicit_reexport = false
-strict_optional = true
 strict_equality = true
-follow_imports = "silent"
-no_implicit_reexport = true
-ignore_missing_imports = true
-
-[tool.mypy-tests]
-ignore_errors = true
+strict = true
+show_error_context = true
+show_error_codes = true
+pretty = true
+show_traceback = true
+raise_exceptions = true
 
 [tool.bandit]
+exclude_dirs = ["tests"]
 tests = ["B201", "B301"]
 skips = ["B101", "B601"]
-
-[tool.poetry.scripts]
-test = "pytest"
-
-[tool.pytest]
-addopts = [
-    "-rxXs", # Display extra info for test failures
-    "--strict-config", # Enforce strict pytest configuration
-    "--strict-markers", # Enforce strict markers
-    "--ignore=docs_src", # Ignore the 'docs_src' directory
-]
-xfail_strict = true
-junit_family = "xunit2"
-filterwarnings = [
-    "error",
-    'ignore:The loop argument is deprecated since Python 3\.8, and scheduled for removal in Python 3\.10:DeprecationWarning:asyncio',
-    "ignore:'cgi' is deprecated:DeprecationWarning",
-    "ignore:'crypt' is deprecated and slated for removal in Python 3.13:DeprecationWarning",
-    "ignore:You seem to already have a custom.*:RuntimeWarning:trio",
-    "ignore::trio.TrioDeprecationWarning",
-    'ignore::pytest.PytestDeprecationWarning:pytest_cov',
-]
-
-[tool.coverage.run]
-parallel = true
-source = ["tests", "app"]
-context = "."
-omit = [
-    ".ruff_cache/*",
-    ".mypy_cache/*",
-    ".pytest_cache/*",
-    "cache/*",
-    ".venv/*",
-    "venv/*",
-]
-
-[tool.coverage.report]
-precision = 2
-show_missing = true
-exclude_lines = [
-    "pragma: no cover",
-    "if TYPE_CHECKING:",
-    "@typing.overload",
-    "raise NotImplementedError",
-]

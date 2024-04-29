@@ -4,6 +4,7 @@ Build an event broker (construct of observer)
 Event: list of functions to be called
 CQS
 """
+
 from abc import ABC
 from enum import Enum
 from types import TracebackType

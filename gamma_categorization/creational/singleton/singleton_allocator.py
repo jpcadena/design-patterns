@@ -1,6 +1,7 @@
 """
 Singleton Allocator script
 """
+
 import secrets
 from typing import Any
 

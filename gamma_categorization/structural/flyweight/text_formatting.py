@@ -1,6 +1,7 @@
 """
 Flyweight script using a Text Formatting
 """
+
 from typing import Any
 
 

@@ -1,6 +1,7 @@
 """
 Method chain script
 """
+
 from typing import Optional, Self
 
 

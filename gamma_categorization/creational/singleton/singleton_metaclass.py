@@ -1,6 +1,7 @@
 """
 Singleton Metaclass script
 """
+
 from typing import Any
 
 

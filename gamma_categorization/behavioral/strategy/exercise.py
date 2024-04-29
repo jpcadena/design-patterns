@@ -1,6 +1,7 @@
 """
 A module for exercise in the gamma categorization.behavioral.strategy package.
 """
+
 from abc import ABC, abstractmethod
 from cmath import sqrt
 
@@ -35,7 +36,7 @@ class RealDiscriminantStrategy(DiscriminantStrategy):
     def calculate_discriminant(self, a: float, b: float, c: float) -> float:
         discriminant = b**2 - 4 * a * c
         if discriminant < 0:
-            return float('nan')
+            return float("nan")
         return discriminant
 
 

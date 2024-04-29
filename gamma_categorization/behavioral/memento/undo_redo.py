@@ -1,6 +1,7 @@
 """
 A module for undo redo in the gamma categorization.behavioral.memento package.
 """
+
 from typing import Optional
 
 from gamma_categorization.behavioral.memento.memento import Memento
@@ -70,17 +71,17 @@ class BankAccount:
         return None
 
     def __str__(self) -> str:
-        return f'Balance = {self.balance}'
+        return f"Balance = {self.balance}"
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     bank_account: BankAccount = BankAccount(100)
     bank_account.deposit(50)
     bank_account.deposit(25)
     print(bank_account)
     bank_account.undo()
-    print(f'Undo 1: {bank_account}')
+    print(f"Undo 1: {bank_account}")
     bank_account.undo()
-    print(f'Undo 2: {bank_account}')
+    print(f"Undo 2: {bank_account}")
     bank_account.redo()
-    print(f'Redo 1: {bank_account}')
+    print(f"Redo 1: {bank_account}")

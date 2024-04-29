@@ -1,6 +1,7 @@
 """
 A module for strategy in the gamma categorization.behavioral.strategy package.
 """
+
 from abc import ABC
 from enum import Enum, auto
 
@@ -55,18 +56,18 @@ class ListStrategy(ABC):
 
 class MarkdownListStrategy(ListStrategy):
     def add_list_item(self, buffer: list[str], item: str) -> None:
-        buffer.append(f' * {item}\n')
+        buffer.append(f" * {item}\n")
 
 
 class HtmlListStrategy(ListStrategy):
     def start(self, buffer: list[str]) -> None:
-        buffer.append('<ul>\n')
+        buffer.append("<ul>\n")
 
     def end(self, buffer: list[str]) -> None:
-        buffer.append('</ul>\n')
+        buffer.append("</ul>\n")
 
     def add_list_item(self, buffer: list[str], item: str) -> None:
-        buffer.append(f'  <li>{item}</li>\n')
+        buffer.append(f"  <li>{item}</li>\n")
 
 
 class TextProcessor:
@@ -115,11 +116,11 @@ class TextProcessor:
         self.buffer.clear()
 
     def __str__(self) -> str:
-        return ''.join(self.buffer)
+        return "".join(self.buffer)
 
 
-if __name__ == '__main__':
-    my_items: list[str] = ['foo', 'bar', 'baz']
+if __name__ == "__main__":
+    my_items: list[str] = ["foo", "bar", "baz"]
     text_processor: TextProcessor = TextProcessor()
     text_processor.set_output_format(OutputFormat.MARKDOWN)
     text_processor.append_list(my_items)
