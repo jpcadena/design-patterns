@@ -54,7 +54,7 @@ python = "^3.11"
 isort = "^5.13.2"
 black = "^24.4.2"
 ruff = "^0.5.4"
-mypy = "^1.10.1"
+mypy = "^1.11.0"
 pre-commit = "^3.7.1"
 
 [build-system]
