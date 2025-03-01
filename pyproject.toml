@@ -51,7 +51,7 @@ packages = [{ include = "design_patterns" }]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-isort = "^6.0.0"
+isort = "^6.0.1"
 black = "^25.1.0"
 ruff = "^0.9.4"
 mypy = "^1.14.1"
